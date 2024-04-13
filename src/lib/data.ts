@@ -33,11 +33,10 @@ function createTimer() {
     }
 }
 
-export const time = readable(new Date(), (set) => {
-    set(new Date());
-
+export const time = readable(new Date().toLocaleTimeString('ru'), (set) => {
     const interval = setInterval(() => {
-        set(new Date());
+        const date = new Date().toLocaleTimeString('ru')
+        set(date);
     }, 1000);
 
     return () => clearInterval(interval);
