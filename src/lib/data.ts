@@ -1,37 +1,22 @@
-import { readable, writable } from 'svelte/store';
+import { derived, readable } from 'svelte/store';
+import { cacheable } from './cacheable';
 
-export const timer = createTimer()
+export const start = cacheable('startDate', '', true)
 
-function createTimer() {
-    const { subscribe, set, update } = writable(new Date())
-    set(new Date());
+export const county = derived(start, ($start, set) => {
+    const now = new Date();
+    const start = new Date($start);
+    const elapsedYears = now.getTime() - start.getTime();
+    const elapsedMonth = now.getMonth() - start.getMonth();
+    const elapsedDays = now.getDate() - start.getDate();
+    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0,).getDate();
+    const years = new Date(elapsedYears).getFullYear() - 1970
+    const months = (years * 12 + elapsedMonth) % 12
+    const days = (months * daysInMonth + elapsedDays) % daysInMonth
 
-    const interval = setInterval(() => {
-        const now = new Date();
-        // const elapsed = Number(now) - Number(start);
-        set(new Date());
-    }, 1000);
+    set({ years, months, days })
 
-    return { subscribe, set, update }
-
-    function convertMS(ms: number) {
-        let y, mt, w, d, h, m, s;
-        s = Math.floor(ms / 1000);
-        m = Math.floor(s / 60);
-        s = s % 60;
-        h = Math.floor(m / 60);
-        m = m % 60;
-        d = Math.floor(h / 24);
-        h = h % 24;
-        w = Math.floor(d / 7);
-        d = d % 7;
-        mt = Math.floor(w / 4);
-        w = w % 4;
-        y = Math.floor(mt / 12);
-        y = y % 12;
-        return { y, mt, w, d, h, m, s };
-    }
-}
+}, { years: 0, months: 0, days: 0 })
 
 export const time = readable(new Date().toLocaleTimeString('ru'), (set) => {
     const interval = setInterval(() => {
@@ -42,10 +27,5 @@ export const time = readable(new Date().toLocaleTimeString('ru'), (set) => {
     return () => clearInterval(interval);
 });
 
-export const ticktock = readable('tick', (set, update) => {
-    const interval = setInterval(() => {
-        update((sound) => (sound === 'tick' ? 'tock' : 'tick'));
-    }, 1000);
+export const date = readable(new Date().toLocaleDateString("ru"))
 
-    return () => clearInterval(interval);
-});
