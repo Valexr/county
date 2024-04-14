@@ -77,6 +77,8 @@
     }
     main {
         padding: 1em;
+        display: grid;
+        place-content: center;
     }
     form {
         /* display: flex; */
@@ -100,7 +102,7 @@
         display: flex;
         justify-content: center;
         gap: 0.15em;
-        margin-bottom: 0.5em;
+        margin-bottom: 0.25em;
     }
     ul li {
         position: relative;
