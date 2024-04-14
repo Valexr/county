@@ -38,9 +38,6 @@
             {name}
         </h1>
         <button>Settings</button> -->
-    </header>
-
-    <main>
         <form action="POST" on:submit|preventDefault>
             <label>
                 <input
@@ -50,6 +47,9 @@
                 />
             </label>
         </form>
+    </header>
+
+    <main>
         <h2>{$date}</h2>
         <ul>
             <li id="years">{$county.years}</li>
@@ -58,7 +58,7 @@
         </ul>
         <h2>{$time}</h2>
     </main>
-    <!-- [{quote: string, author: string, category: string}] -->
+
     <footer>
         {#await getQuote() then { quote, author }}
             <blockquote>
@@ -66,13 +66,15 @@
                 <footer>~ {author}</footer>
             </blockquote>
         {/await}
-        <!-- <p>{new Date().getFullYear()} © County</p> -->
     </footer>
 {/await}
 
 <style>
     @import "app.css";
 
+    header {
+        justify-content: center;
+    }
     main {
         padding: 1em;
     }
@@ -93,7 +95,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: 25vw;
+        font-size: 30vw;
         font-weight: bold;
         display: flex;
         justify-content: center;
