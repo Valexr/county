@@ -2,7 +2,7 @@
     import { date, time, start, quote, county } from "$lib/data";
     import { images } from "$lib/images";
 
-    import DateInput from "$lib/components/DateInput.svelte";
+    import Date from "$lib/components/Date.svelte";
     import County from "$lib/components/County.svelte";
     import Quote from "$lib/components/Quote.svelte";
 </script>
@@ -25,7 +25,7 @@
 
 {#await images.back() then}
     <header>
-        <DateInput date={$date} bind:input bind:value={$start} />
+        <Date date={$date} bind:input bind:value={$start} />
     </header>
 
     <main>
@@ -37,9 +37,7 @@
             </h2>
         {/if}
         {#await quote.load() then}
-            {#if $quote}
-                <Quote quote={$quote} href={repository} />
-            {/if}
+            <Quote quote={$quote} href={repository} />
         {/await}
     </main>
 
@@ -56,12 +54,12 @@
     header {
         justify-content: center;
     }
-    footer h2 {
-        margin: 0;
-    }
     main {
         padding: 1em;
         display: grid;
         place-content: center;
+    }
+    footer h2 {
+        margin: 0;
     }
 </style>

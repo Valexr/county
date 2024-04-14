@@ -75,6 +75,10 @@ function createImages() {
         async back() {
             await load();
             const [{ src }] = prepare();
+            // await addImageProcess(src)
+            // const img = new Image();
+            // img.src = src
+            // await img.decode();
             document.body.style.cssText = `
                 background: url(${src}) center no-repeat;
                 background-size: cover;
@@ -82,3 +86,4 @@ function createImages() {
         }
     }
 }
+

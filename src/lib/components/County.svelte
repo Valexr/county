@@ -1,11 +1,49 @@
+<script lang="ts" context="module">
+    import Button from "./Button.svelte";
+</script>
+
 <script lang="ts">
     export let county: { years: number; months: number; days: number };
+
+    let type = "";
 </script>
 
 <ul>
-    <li id="years">{county.years}</li>
-    <li id="months">{county.months}</li>
-    <li id="days">{county.days}</li>
+    {#if type === "months"}
+        <li id="months">
+            <Button id="" bind:type>
+                {county.years * 12}
+            </Button>
+        </li>
+    {:else if type === "days"}
+        <li id="days">
+            <Button id="" bind:type>
+                {county.years * 12 * 4 * 7}
+            </Button>
+        </li>
+    {:else if type === "hours"}
+        <li id="hours">
+            <Button id="" bind:type>
+                {county.years * 12 * 4 * 7 * 24}
+            </Button>
+        </li>
+    {:else}
+        <li id="years">
+            <Button id="hours" bind:type>
+                {county.years}
+            </Button>
+        </li>
+        <li id="months">
+            <Button id="months" bind:type>
+                {county.months}
+            </Button>
+        </li>
+        <li id="days">
+            <Button id="days" bind:type>
+                {county.days}
+            </Button>
+        </li>
+    {/if}
 </ul>
 
 <style>
@@ -13,11 +51,11 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: min(27.5vw, 25vh);
+        font-size: min(25vw, 25vh);
         font-weight: bold;
         display: flex;
         justify-content: center;
-        gap: 0.25em;
+        gap: 0em;
         margin-bottom: 0.25em;
     }
     ul li {

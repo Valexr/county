@@ -1,3 +1,7 @@
+<script lang="ts" context="module">
+    import { fade } from "svelte/transition";
+</script>
+
 <script lang="ts">
     export let quote = {
         content: "",
@@ -6,7 +10,7 @@
     export let href = "";
 </script>
 
-<blockquote>
+<blockquote in:fade>
     <p>{quote.content}</p>
     <a {href}>~ {quote.author}</a>
 </blockquote>
