@@ -21,7 +21,8 @@ body::after {
     inset: 0;
 }
 
-header {
+header,
+footer {
     display: flex;
     align-items: center;
     justify-content: space-between;

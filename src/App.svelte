@@ -1,5 +1,6 @@
 <script lang="ts" context="module">
     import Gh from "$lib/components/Gh.svelte";
+    import DateInput from "$lib/components/DateInput.svelte";
     import { date, time, start, county } from "$lib/data";
     import { getPhotos } from "$lib/images";
 </script>
@@ -7,8 +8,6 @@
 <script lang="ts">
     export let name: Name;
     export let repository: Repository;
-
-    $start = "2013-04-09";
 
     async function setBack() {
         const image = await getPhotos(1, {});
@@ -32,40 +31,36 @@
 
 {#await setBack() then}
     <header>
-        <!-- <button>Image</button>
-        <h1>
-            <Gh {repository} />
-            {name}
-        </h1>
-        <button>Settings</button> -->
-        <form action="POST" on:submit|preventDefault>
-            <label>
-                <input
-                    type="date"
-                    placeholder="Set start date"
-                    bind:value={$start}
-                />
-            </label>
-        </form>
+        {#if $start}
+            <DateInput bind:value={$start} />
+        {:else}
+            <h2>{$date}</h2>
+        {/if}
     </header>
 
     <main>
-        <!-- <h2>{$date}</h2> -->
-        <ul>
-            <li id="years">{$county.years}</li>
-            <li id="months">{$county.months}</li>
-            <li id="days">{$county.days}</li>
-        </ul>
+        {#if $start}
+            <ul>
+                <li id="years">{$county.years}</li>
+                <li id="months">{$county.months}</li>
+                <li id="days">{$county.days}</li>
+            </ul>
+        {:else}
+            <h2>Set start date</h2>
+            <DateInput bind:value={$start} />
+        {/if}
         {#await getQuote() then { quote, author }}
             <blockquote>
                 <p>{quote}</p>
-                <footer>~ {author}</footer>
+                <cite>~ {author}</cite>
             </blockquote>
         {/await}
     </main>
 
     <footer>
+        <button on:click={setBack}>Image</button>
         <h2>{$time}</h2>
+        <button>Settings</button>
     </footer>
 {/await}
 
@@ -75,23 +70,13 @@
     header {
         justify-content: center;
     }
+    footer h2 {
+        margin: 0;
+    }
     main {
         padding: 1em;
         display: grid;
         place-content: center;
-    }
-    form {
-        /* display: flex; */
-        align-items: center;
-        justify-content: center;
-    }
-    input {
-        font-size: 1.5em;
-        font-weight: bold;
-        font-family: inherit;
-        background: transparent;
-        border: 0;
-        color: inherit;
     }
     ul {
         list-style: none;
@@ -118,5 +103,8 @@
 
     blockquote p {
         font-style: italic;
+    }
+    blockquote cite {
+        font-style: normal;
     }
 </style>
