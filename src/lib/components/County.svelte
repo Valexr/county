@@ -1,11 +1,11 @@
-<script lang="ts" context="module">
-    import { county } from "$lib/data";
+<script lang="ts">
+    export let county: { years: number; months: number; days: number };
 </script>
 
 <ul>
-    <li id="years">{$county.years}</li>
-    <li id="months">{$county.months}</li>
-    <li id="days">{$county.days}</li>
+    <li id="years">{county.years}</li>
+    <li id="months">{county.months}</li>
+    <li id="days">{county.days}</li>
 </ul>
 
 <style>

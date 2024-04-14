@@ -1,10 +1,21 @@
 <script lang="ts">
+    export let date = "";
     export let value = "";
+    export let input: HTMLInputElement;
 </script>
 
-<form on:submit|preventDefault>
+<form method="post" on:submit|preventDefault>
+    {#if !value}
+        <h2>{date}</h2>
+    {/if}
     <label>
-        <input type="date" max={new Date().toLocaleString("ru")} bind:value />
+        <input
+            type="date"
+            max={new Date().toLocaleString("ru")}
+            class:hidden={!value}
+            bind:this={input}
+            bind:value
+        />
     </label>
 </form>
 
@@ -17,5 +28,8 @@
         border: 0;
         color: inherit;
         outline: 0;
+    }
+    input.hidden {
+        opacity: 0;
     }
 </style>

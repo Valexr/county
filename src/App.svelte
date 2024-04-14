@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { date, time, start, quote } from "$lib/data";
+    import { date, time, start, quote, county } from "$lib/data";
     import { images } from "$lib/images";
 
     import DateInput from "$lib/components/DateInput.svelte";
@@ -10,6 +10,13 @@
 <script lang="ts">
     export let name: Name;
     export let repository: Repository;
+
+    let input: HTMLInputElement;
+
+    function openDatepicker() {
+        input.focus();
+        input.showPicker();
+    }
 </script>
 
 <svelte:head>
@@ -18,19 +25,16 @@
 
 {#await images.back() then}
     <header>
-        {#if $start}
-            <DateInput bind:value={$start} />
-        {:else}
-            <h2>{$date}</h2>
-        {/if}
+        <DateInput date={$date} bind:input bind:value={$start} />
     </header>
 
     <main>
         {#if $start}
-            <County />
+            <County county={$county} />
         {:else}
-            <h2>Set start date</h2>
-            <DateInput bind:value={$start} />
+            <h2>
+                <button on:click={openDatepicker}>Set start date</button>
+            </h2>
         {/if}
         {#await quote.load() then}
             {#if $quote}
