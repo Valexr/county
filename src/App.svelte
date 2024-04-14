@@ -56,16 +56,16 @@
             <li id="months">{$county.months}</li>
             <li id="days">{$county.days}</li>
         </ul>
-        <h2>{$time}</h2>
-    </main>
-
-    <footer>
         {#await getQuote() then { quote, author }}
             <blockquote>
                 <p>{quote}</p>
                 <footer>~ {author}</footer>
             </blockquote>
         {/await}
+    </main>
+
+    <footer>
+        <h2>{$time}</h2>
     </footer>
 {/await}
 
@@ -97,11 +97,11 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: min(30vw, 25vh);
+        font-size: min(27.5vw, 25vh);
         font-weight: bold;
         display: flex;
         justify-content: center;
-        gap: 0.15em;
+        gap: 0.25em;
         margin-bottom: 0.25em;
     }
     ul li {
