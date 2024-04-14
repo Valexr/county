@@ -4,10 +4,7 @@ declare module '*.svg' {
 }
 
 type Name = string
-type Repository = {
-    type: string
-    url: string
-}
+type Repository = string
 
 type Size = {
     width: number;

@@ -1,22 +1,21 @@
 <script lang="ts" context="module">
-    import Gh from "$lib/components/Gh.svelte";
-    import DateInput from "$lib/components/DateInput.svelte";
-    import { date, time, start, county } from "$lib/data";
+    import { date, time, start } from "$lib/data";
     import { getPhotos } from "$lib/images";
+
+    import DateInput from "$lib/components/DateInput.svelte";
+    import County from "$lib/components/County.svelte";
+    import Quote from "$lib/components/Quote.svelte";
 </script>
 
 <script lang="ts">
     export let name: Name;
-    export let repository: Repository;
 
     async function setBack() {
-        const image = await getPhotos(1, {});
-        if (image) {
-            document.body.style.cssText = `
-                background: url(${image[0].src}) center no-repeat;
-                background-size: cover;
-            `;
-        }
+        const images = await getPhotos(1, {});
+        document.body.style.cssText = `
+            background: url(${images?.[0].src}) center no-repeat;
+            background-size: cover;
+        `;
     }
 
     async function getQuote() {
@@ -40,20 +39,13 @@
 
     <main>
         {#if $start}
-            <ul>
-                <li id="years">{$county.years}</li>
-                <li id="months">{$county.months}</li>
-                <li id="days">{$county.days}</li>
-            </ul>
+            <County />
         {:else}
             <h2>Set start date</h2>
             <DateInput bind:value={$start} />
         {/if}
         {#await getQuote() then { quote, author }}
-            <blockquote>
-                <p>{quote}</p>
-                <cite>~ {author}</cite>
-            </blockquote>
+            <Quote {quote} {author} />
         {/await}
     </main>
 
@@ -77,34 +69,5 @@
         padding: 1em;
         display: grid;
         place-content: center;
-    }
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        font-size: min(27.5vw, 25vh);
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        gap: 0.25em;
-        margin-bottom: 0.25em;
-    }
-    ul li {
-        position: relative;
-    }
-    ul li::after {
-        content: attr(id);
-        font-size: 15%;
-        font-weight: normal;
-        position: absolute;
-        inset: 0;
-        top: 90%;
-    }
-
-    blockquote p {
-        font-style: italic;
-    }
-    blockquote cite {
-        font-style: normal;
     }
 </style>
