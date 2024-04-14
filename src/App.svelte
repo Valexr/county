@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
     import { date, time, start, quote } from "$lib/data";
-    import { getPhotos } from "$lib/images";
+    import { images } from "$lib/images";
 
     import DateInput from "$lib/components/DateInput.svelte";
     import County from "$lib/components/County.svelte";
@@ -10,21 +10,13 @@
 <script lang="ts">
     export let name: Name;
     export let repository: Repository;
-
-    async function setBack() {
-        const images = await getPhotos(1, {});
-        document.body.style.cssText = `
-            background: url(${images?.[0].src}) center no-repeat;
-            background-size: cover;
-        `;
-    }
 </script>
 
 <svelte:head>
     <title>{name}</title>
 </svelte:head>
 
-{#await setBack() then}
+{#await images.back() then}
     <header>
         {#if $start}
             <DateInput bind:value={$start} />
@@ -42,13 +34,13 @@
         {/if}
         {#await quote.load() then}
             {#if $quote}
-                <Quote quote={$quote} />
+                <Quote quote={$quote} href={repository} />
             {/if}
         {/await}
     </main>
 
     <footer>
-        <button on:click={setBack}>Image</button>
+        <button on:click={images.back}>Image</button>
         <h2>{$time}</h2>
         <button on:click={quote.load}>Quote</button>
     </footer>

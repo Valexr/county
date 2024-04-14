@@ -3,18 +3,19 @@
         content: "",
         author: "",
     };
+    export let href = "";
 </script>
 
 <blockquote>
     <p>{quote.content}</p>
-    <cite>~ {quote.author}</cite>
+    <a {href}>~ {quote.author}</a>
 </blockquote>
 
 <style>
     blockquote p {
         font-style: italic;
     }
-    blockquote cite {
+    blockquote a {
         font-style: normal;
     }
 </style>
