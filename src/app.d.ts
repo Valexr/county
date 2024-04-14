@@ -14,9 +14,6 @@ type Size = {
     height: number;
 }
 
-/**
- * `https://www.picsum.photos` API response schema
- */
 type ImageSchema = {
     id: number;
     alt: string;
@@ -25,9 +22,6 @@ type ImageSchema = {
     height: number;
 }
 
-/**
- * Common Image interface.
- */
 type Slide = {
     id?: string | number;
     src?: string;
