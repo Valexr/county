@@ -16,3 +16,12 @@
         --active: #5b5b66;
     }
 }
+
+:root {
+    color-scheme: dark;
+    --light: #1c1b22;
+    --dark: #f2f2f2;
+    --back: #2b2a33;
+    --hover: #52525e;
+    --active: #5b5b66;
+}
