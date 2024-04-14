@@ -13,6 +13,14 @@ body {
     background-color: var(--light);
 }
 
+body::after {
+    content: '';
+    background: rgba(0, 0, 0, 0.27);
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+}
+
 header {
     display: flex;
     align-items: center;
