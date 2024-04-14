@@ -9,6 +9,7 @@
 
 <script lang="ts">
     export let name: Name;
+    export let repository: Repository;
 
     async function setBack() {
         const images = await getPhotos(1, {});
