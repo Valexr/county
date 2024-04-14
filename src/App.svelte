@@ -50,7 +50,7 @@
     </header>
 
     <main>
-        <h2>{$date}</h2>
+        <!-- <h2>{$date}</h2> -->
         <ul>
             <li id="years">{$county.years}</li>
             <li id="months">{$county.months}</li>
@@ -95,11 +95,11 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: 30vw;
+        font-size: min(30vw, 25vh);
         font-weight: bold;
         display: flex;
         justify-content: center;
-        gap: 5vw;
+        gap: 0.15em;
         margin-bottom: 0.5em;
     }
     ul li {
