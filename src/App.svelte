@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { date, time, start } from "$lib/data";
+    import { date, time, start, quote } from "$lib/data";
     import { getPhotos } from "$lib/images";
 
     import DateInput from "$lib/components/DateInput.svelte";
@@ -16,11 +16,6 @@
             background: url(${images?.[0].src}) center no-repeat;
             background-size: cover;
         `;
-    }
-
-    async function getQuote() {
-        const res = await fetch("https://dummyjson.com/quotes/random");
-        return res.json();
     }
 </script>
 
@@ -44,15 +39,17 @@
             <h2>Set start date</h2>
             <DateInput bind:value={$start} />
         {/if}
-        {#await getQuote() then { quote, author }}
-            <Quote {quote} {author} />
+        {#await quote.load() then}
+            {#if $quote}
+                <Quote quote={$quote} />
+            {/if}
         {/await}
     </main>
 
     <footer>
         <button on:click={setBack}>Image</button>
         <h2>{$time}</h2>
-        <button>Settings</button>
+        <button on:click={quote.load}>Quote</button>
     </footer>
 {/await}
 

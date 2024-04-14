@@ -1,4 +1,4 @@
-import { derived, readable } from 'svelte/store';
+import { derived, readable, writable } from 'svelte/store';
 import { cacheable } from './cacheable';
 
 export const start = cacheable('startDate', '', true)
@@ -30,4 +30,20 @@ export const time = readable(new Date().toLocaleTimeString('ru'), (set) => {
 });
 
 export const date = readable(new Date().toLocaleDateString("ru"))
+
+export const quote = createQuote()
+function createQuote() {
+    const { subscribe, set, update } = writable({ content: "", author: "" })
+    return {
+        subscribe, set, update,
+        async load() {
+            const url = "https://api.quotable.io/quotes/random";
+            // "https://dummyjson.com/quotes/random"
+            const res = await fetch(url);
+            const [{ content, author }] = await res.json()
+
+            set({ content, author })
+        }
+    }
+}
 

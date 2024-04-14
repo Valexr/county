@@ -1,11 +1,13 @@
 <script lang="ts">
-    export let quote = "";
-    export let author = "";
+    export let quote = {
+        content: "",
+        author: "",
+    };
 </script>
 
 <blockquote>
-    <p>{quote}</p>
-    <cite>~ {author}</cite>
+    <p>{quote.content}</p>
+    <cite>~ {quote.author}</cite>
 </blockquote>
 
 <style>
