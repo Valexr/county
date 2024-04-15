@@ -3,7 +3,12 @@
 </script>
 
 <script lang="ts">
-    export let county: { years: number; months: number; days: number };
+    export let county: {
+        years: number;
+        months: number;
+        days: number;
+        full: Record<string, number>;
+    };
 
     let type = "";
 </script>
@@ -12,19 +17,19 @@
     {#if type === "months"}
         <li id="months">
             <Button id="" bind:type>
-                {county.years * 12}
+                {county.full.months}
             </Button>
         </li>
     {:else if type === "days"}
         <li id="days">
             <Button id="" bind:type>
-                {county.years * 12 * 4 * 7}
+                {county.full.days}
             </Button>
         </li>
     {:else if type === "hours"}
         <li id="hours">
             <Button id="" bind:type>
-                {county.years * 12 * 4 * 7 * 24}
+                {county.full.hours}
             </Button>
         </li>
     {:else}
