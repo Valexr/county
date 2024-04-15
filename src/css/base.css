@@ -22,6 +22,15 @@ body::after {
     overflow: hidden;
 }
 
+body::before {
+    content: attr(title);
+    position: absolute;
+    inset: 0;
+    top: 97.5%;
+    font-size: 0.8em;
+    font-weight: 300;
+}
+
 header,
 footer {
     display: flex;

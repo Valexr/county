@@ -74,7 +74,7 @@ function createImages() {
         subscribe, set, update, load, prepare,
         async back() {
             await load();
-            const [{ src }] = prepare();
+            const [{ src, alt }] = prepare();
             // await addImageProcess(src)
             // const img = new Image();
             // img.src = src
@@ -83,6 +83,7 @@ function createImages() {
                 background: url(${src}) center no-repeat;
                 background-size: cover;
             `;
+            document.body.title = alt
         }
     }
 }
