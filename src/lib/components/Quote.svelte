@@ -12,7 +12,7 @@
 
 <blockquote in:fade>
     <p>{quote.content}</p>
-    <a {href}>~ {quote.author}</a>
+    <a {href} target="_blank">~ {quote.author}</a>
 </blockquote>
 
 <style>
