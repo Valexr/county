@@ -27,7 +27,7 @@ export const county = derived(([start, time]), ([$start, $time], set) => {
         set({
             years, months, days,
             full: {
-                months: years * 12,
+                months: years * 12 + months,
                 days: Math.trunc(elapsedMS / (3600000 * 24)),
                 hours: Math.trunc(elapsedMS / 3600000)
             }
