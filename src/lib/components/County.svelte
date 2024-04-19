@@ -57,7 +57,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: min(25vw, 25vh);
+        font-size: min(23vw, 25vh);
         font-weight: bold;
         display: flex;
         justify-content: center;
