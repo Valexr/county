@@ -29,9 +29,6 @@ export function convert(en: keyof Trans, count = 0) {
         hours: FIRSTABLE ? 'час' : SECONDABLE ? 'часа' : 'часов'
     }
 
-    return RU ? trans[en] : count ? en.substring(0, en.length - 1) : en
-    // 1 - year/год | month/месяц | day/день | hour/час
-    // 2-4 - years/года | months/месяца | days/дня | hours/часа
-    // 0, 5-20 - years/лет | months/месяцев | days/дней | hours/часов
+    return RU ? trans[en] : count === 1 ? en.substring(0, en.length - 1) : en
 }
 
