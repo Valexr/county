@@ -1,7 +1,6 @@
 import { derived, readable, writable } from 'svelte/store';
 import { cacheable } from './cacheable';
-import jsonp from './jsonp';
-import { random } from './utils';
+import { random, local } from './utils';
 
 export const start = cacheable('startDate', '', true)
 export const date = readable(new Date().toLocaleDateString("ru"))
@@ -44,8 +43,7 @@ function createQuote() {
     return {
         subscribe, set, update,
         async load() {
-            const local = navigator.language.includes('ru') ? 'ru' : 'en'
-            const url = `./assets/quotes_${local}.json`
+            const url = `./assets/quotes_${local()}.json`
             const res = await fetch(url);
             const json = await res.json()
             const quote = json[random(json.length)];
@@ -53,6 +51,4 @@ function createQuote() {
         }
     }
 }
-
-export const local = writable(navigator.languages[1] === 'ru' ? 'ru' : 'en')
 
