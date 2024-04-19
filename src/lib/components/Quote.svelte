@@ -3,17 +3,17 @@
 </script>
 
 <script lang="ts">
-    export let quote = {
-        content: "",
-        author: "",
-    };
+    export let quote: [text: string, author: string];
     export let href = "";
 </script>
 
-<blockquote in:fade>
-    <p>{quote.content}</p>
-    <a {href} target="_blank">~ {quote.author}</a>
-</blockquote>
+{#if quote}
+    {@const [text, author] = quote}
+    <blockquote in:fade>
+        <p>{text}</p>
+        <a {href} target="_blank">~ {author}</a>
+    </blockquote>
+{/if}
 
 <style>
     blockquote p {

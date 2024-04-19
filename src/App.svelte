@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
     import { date, time, start, quote, county } from "$lib/data";
     import { images } from "$lib/images";
+    import { t } from "$lib/utils";
 
     import Date from "$lib/components/Date.svelte";
     import County from "$lib/components/County.svelte";
@@ -33,7 +34,9 @@
             <County county={$county} />
         {:else}
             <h2>
-                <button on:click={openDatepicker}>Set start date</button>
+                <button on:click={openDatepicker}>
+                    {t("Set start date", "Начальная дата")}
+                </button>
             </h2>
         {/if}
         {#await quote.load() then}
@@ -42,9 +45,9 @@
     </main>
 
     <footer>
-        <button on:click={images.back}>Image</button>
+        <button on:click={images.back}>{t("Image", "Картинка")}</button>
         <h2>{$time}</h2>
-        <button on:click={quote.load}>Quote</button>
+        <button on:click={quote.load}>{t("Quote", "Цитата")}</button>
     </footer>
 {/await}
 
