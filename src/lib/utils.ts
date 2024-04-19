@@ -3,6 +3,5 @@ export function random(length: number) {
 }
 
 export function t(en: string, ru: string) {
-    console.log(navigator.languages[1])
     return navigator.languages[1] === 'ru' ? ru : en
 }

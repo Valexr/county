@@ -48,7 +48,6 @@ function createQuote() {
             const url = `./assets/quotes_${local}.json`
             const res = await fetch(url);
             const json = await res.json()
-            console.log(navigator.languages[1])
             const quote = json[random(json.length)];
             set(quote)
         }
