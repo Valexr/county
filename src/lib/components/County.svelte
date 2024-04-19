@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
     import Button from "./Button.svelte";
-    import { t } from "$lib/utils";
+    import { convert, t } from "$lib/utils";
 </script>
 
 <script lang="ts">
@@ -16,35 +16,35 @@
 
 <ul>
     {#if type === "months"}
-        <li id={t("months", "месяцы")}>
+        <li id={convert("months", county.full.months)}>
             <Button id="" bind:type>
                 {county.full.months}
             </Button>
         </li>
     {:else if type === "days"}
-        <li id={t("days", "дни")}>
+        <li id={convert("days", county.full.days)}>
             <Button id="" bind:type>
                 {county.full.days}
             </Button>
         </li>
     {:else if type === "hours"}
-        <li id={t("hours", "часы")}>
+        <li id={convert("hours", county.full.hours)}>
             <Button id="" bind:type>
                 {county.full.hours}
             </Button>
         </li>
     {:else}
-        <li id={t("years", "годы")}>
+        <li id={convert("years", county.years)}>
             <Button id="hours" bind:type>
                 {county.years}
             </Button>
         </li>
-        <li id={t("months", "месяцы")}>
+        <li id={convert("months", county.months)}>
             <Button id="months" bind:type>
                 {county.months}
             </Button>
         </li>
-        <li id={t("days", "дни")}>
+        <li id={convert("days", county.days)}>
             <Button id="days" bind:type>
                 {county.days}
             </Button>
