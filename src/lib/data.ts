@@ -44,7 +44,7 @@ function createQuote() {
     return {
         subscribe, set, update,
         async load() {
-            const local = navigator.languages[1] === 'ru' ? 'ru' : 'en'
+            const local = navigator.language.includes('ru') ? 'ru' : 'en'
             const url = `./assets/quotes_${local}.json`
             const res = await fetch(url);
             const json = await res.json()
