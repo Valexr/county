@@ -16,6 +16,9 @@
 {/if}
 
 <style>
+    blockquote {
+        font-size: larger;
+    }
     blockquote p {
         font-style: italic;
     }

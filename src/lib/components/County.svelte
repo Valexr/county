@@ -69,7 +69,7 @@
     }
     ul li::after {
         content: attr(id);
-        font-size: 15%;
+        font-size: 20%;
         font-weight: normal;
         position: absolute;
         inset: 0;
