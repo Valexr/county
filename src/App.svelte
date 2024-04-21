@@ -60,6 +60,7 @@
     main {
         padding: 1em;
         display: grid;
+        max-width: 100vw;
         place-content: center;
     }
     footer h2 {
