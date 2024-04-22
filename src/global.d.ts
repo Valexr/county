@@ -27,3 +27,17 @@ type Slide = {
     height?: string | number;
     [key: string]: unknown;
 }
+
+type Counter = {
+    id: number,
+    title: string,
+    start: string,
+    years: number,
+    months: number,
+    days: number,
+    full: Record<string, number>
+}
+
+type StartDate = { start: string, title: string }
+
+type ChangeEventHandler<T> = Event & { currentTarget: EventTarget & T; }

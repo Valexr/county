@@ -17,7 +17,8 @@
 
 <style>
     blockquote {
-        font-size: larger;
+        font-size: large;
+        margin-top: 0;
     }
     blockquote p {
         font-style: italic;

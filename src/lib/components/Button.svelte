@@ -13,6 +13,9 @@
 </button>
 
 <style>
+    button {
+        padding: 0;
+    }
     button.clear {
         background: transparent;
         font-family: inherit;

@@ -4,7 +4,7 @@
 </script>
 
 <script lang="ts">
-    export let county: {
+    export let counter: {
         years: number;
         months: number;
         days: number;
@@ -16,37 +16,37 @@
 
 <ul>
     {#if type === "months"}
-        <li id={convert("months", county.full.months)}>
+        <li id={convert("months", counter.full.months)}>
             <Button id="" bind:type>
-                {county.full.months}
+                {counter.full.months}
             </Button>
         </li>
     {:else if type === "days"}
-        <li id={convert("days", county.full.days)}>
+        <li id={convert("days", counter.full.days)}>
             <Button id="" bind:type>
-                {county.full.days}
+                {counter.full.days}
             </Button>
         </li>
     {:else if type === "hours"}
-        <li id={convert("hours", county.full.hours)}>
+        <li id={convert("hours", counter.full.hours)}>
             <Button id="" bind:type>
-                {county.full.hours}
+                {counter.full.hours}
             </Button>
         </li>
     {:else}
-        <li id={convert("years", county.years)}>
+        <li id={convert("years", counter.years)}>
             <Button id="hours" bind:type>
-                {county.years}
+                {counter.years}
             </Button>
         </li>
-        <li id={convert("months", county.months)}>
+        <li id={convert("months", counter.months)}>
             <Button id="months" bind:type>
-                {county.months}
+                {counter.months}
             </Button>
         </li>
-        <li id={convert("days", county.days)}>
+        <li id={convert("days", counter.days)}>
             <Button id="days" bind:type>
-                {county.days}
+                {counter.days}
             </Button>
         </li>
     {/if}
@@ -57,11 +57,11 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: min(23vw, 25vh);
+        font-size: min(25vw, 27vh);
         font-weight: bold;
         display: flex;
         justify-content: center;
-        gap: 0em;
+        gap: 0.25em;
         margin-bottom: 0.25em;
     }
     ul li {

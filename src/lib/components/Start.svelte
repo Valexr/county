@@ -1,20 +1,22 @@
 <script lang="ts">
     export let date = "";
-    export let value = "";
+    export let start = new Date().toLocaleString("ru");
     export let input: HTMLInputElement;
+
+    $: console.log("start", start);
 </script>
 
 <form method="post" on:submit|preventDefault>
-    {#if !value}
+    {#if !start}
         <h2>{date}</h2>
     {/if}
     <label>
         <input
             type="date"
             max={new Date().toLocaleString("ru")}
-            class:hidden={!value}
+            class:hidden={!start}
             bind:this={input}
-            bind:value
+            bind:value={start}
         />
     </label>
 </form>

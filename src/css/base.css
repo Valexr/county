@@ -6,7 +6,7 @@ html {
 body {
     margin: 0;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
     font-family: system-ui;
     text-align: center;
@@ -29,6 +29,7 @@ body::before {
     top: 97.5%;
     font-size: 0.8em;
     font-weight: 300;
+    opacity: 0.69;
 }
 
 header,
