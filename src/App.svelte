@@ -180,6 +180,9 @@
         /* max-width: 20em; */
         margin: auto;
     }
+    input[type="date"]::-webkit-datetime-edit {
+        flex: 1;
+    }
     input.clear {
         border-color: transparent;
     }
