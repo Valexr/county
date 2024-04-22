@@ -3,7 +3,6 @@
     import { images } from "$lib/images";
     import { t } from "$lib/utils";
 
-    import Start from "$lib/components/Start.svelte";
     import County from "$lib/components/County.svelte";
     import Quote from "$lib/components/Quote.svelte";
 </script>
@@ -67,6 +66,7 @@
                                     class="clear"
                                     type="text"
                                     name="title"
+                                    maxlength="15"
                                     value={counter.title}
                                     placeholder={t(
                                         "Counter name",
