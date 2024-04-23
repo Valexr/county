@@ -6,11 +6,12 @@ html {
 body {
     margin: 0;
     display: grid;
-    grid-template-rows: 1fr 0.5fr auto;
+    grid-template-rows: 1fr 0.8fr 4em;
     grid-template-columns: 1fr;
     font-family: system-ui;
     text-align: center;
     background-color: var(--light);
+    overflow: hidden;
 }
 
 body::after {
