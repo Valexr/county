@@ -67,6 +67,12 @@ button:hover:active {
     background-color: var(--active);
 }
 
+button.box {
+    aspect-ratio: 1/1;
+    align-items: center;
+    display: flex;
+}
+
 a {
     color: inherit;
 }

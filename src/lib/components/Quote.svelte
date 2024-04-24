@@ -11,17 +11,20 @@
     {@const [text, author] = quote}
     <blockquote in:fade>
         <p>{text}</p>
-        <a {href} target="_blank">~ {author}</a>
+        <p>
+            <a {href} target="_blank">~ {author}</a>
+        </p>
     </blockquote>
 {/if}
 
 <style>
     blockquote {
         font-size: large;
-        margin: 0 1em;
+        margin: 0;
     }
     blockquote p {
         font-style: italic;
+        margin: 1em;
     }
     blockquote a {
         font-style: normal;
