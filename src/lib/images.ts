@@ -34,6 +34,20 @@ function createImages() {
             const res = await fetch(url);
             set(await res.json());
         }
+        back()
+    }
+
+    function back() {
+        const [{ src, alt }] = prepare();
+        // await addImageProcess(src)
+        // const img = new Image();
+        // img.src = src
+        // await img.decode();
+        document.body.style.cssText = `
+            background: url(${src}) center no-repeat;
+            background-size: cover;
+        `;
+        document.body.title = alt
     }
 
     function prepare(limit = 1, size = { width: window.innerWidth, height: window.innerHeight }) {
@@ -71,20 +85,7 @@ function createImages() {
     }
 
     return {
-        subscribe, set, update, load, prepare,
-        async back() {
-            await load();
-            const [{ src, alt }] = prepare();
-            // await addImageProcess(src)
-            // const img = new Image();
-            // img.src = src
-            // await img.decode();
-            document.body.style.cssText = `
-                background: url(${src}) center no-repeat;
-                background-size: cover;
-            `;
-            document.body.title = alt
-        }
+        subscribe, set, update, load, prepare, back,
     }
 }
 

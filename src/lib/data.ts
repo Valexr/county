@@ -1,6 +1,7 @@
 import { Readable, Writable, derived, readable, writable } from 'svelte/store';
 import { cacheable } from './cacheable';
 import { random, local } from './utils';
+import { getable } from './getable';
 
 
 export const dates = createDates()
@@ -63,17 +64,30 @@ export const counters = derived<[Writable<StartDate[]>, Readable<string>], Count
         }
     }, [])
 
-export const quote = createQuote()
-function createQuote() {
-    const { subscribe, set, update } = writable<[text: string, author: string]>()
+
+
+export const quotes = createQuotes()
+function createQuotes() {
+    const { subscribe, set, get, update } = getable<[text: string, author: string][]>([['', '']])
     return {
-        subscribe, set, update,
+        subscribe, set, get, update,
         async load() {
             const url = `./assets/quotes_${local()}.json`
             const res = await fetch(url);
             const json = await res.json()
-            const quote = json[random(json.length)];
-            set(quote)
+            set(json)
+            quote.random()
+        }
+    }
+}
+
+export const quote = createQuote()
+function createQuote() {
+    const { subscribe, set, get, update } = getable<[text: string, author: string]>(['', ''])
+    return {
+        subscribe, set, update,
+        random() {
+            set(quotes.get()[random(quotes.get().length)]);
         }
     }
 }

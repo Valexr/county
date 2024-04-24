@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { date, time, counters, quote, dates } from "$lib/data";
+    import { date, time, counters, quote, dates, quotes } from "$lib/data";
     import { images } from "$lib/images";
     import { t } from "$lib/utils";
 
@@ -56,7 +56,7 @@
     <title>{name}</title>
 </svelte:head>
 
-{#await images.back() then}
+{#await images.load() then}
     <main>
         {#each $counters as counter, id}
             <section use:intersection id={String(id)}>
@@ -75,14 +75,16 @@
             <DateForm />
         </section>
     </main>
-    {#await quote.load() then}
-        <Quote quote={$quote} href={repository} />
+    {#await quotes.load() then}
+        {#key $quote}
+            <Quote quote={$quote} href={repository} />
+        {/key}
     {/await}
 
     <footer>
         <button on:click={images.back}>{t("Image", "Картинка")}</button>
         <h2>{$time}</h2>
-        <button on:click={quote.load}>{t("Quote", "Цитата")}</button>
+        <button on:click={quote.random}>{t("Quote", "Цитата")}</button>
     </footer>
 {/await}
 
