@@ -36,6 +36,19 @@
         dates.del(Number(id));
     }
 
+    function intersection(section: HTMLElement) {
+        const observer = new IntersectionObserver(observe, {
+            root: document.body,
+            rootMargin: "0px",
+            threshold: 0,
+        });
+        observer.observe(section);
+        function observe(entries: IntersectionObserverEntry[]) {
+            const active = entries.find((e) => e.isIntersecting);
+            console.log(entries, active);
+        }
+    }
+
     $: console.log($date);
 </script>
 
@@ -46,7 +59,7 @@
 {#await images.back() then}
     <main>
         {#each $counters as counter, id}
-            <section>
+            <section use:intersection id={String(id)}>
                 <header>
                     <DateForm {id} {counter} />
                 </header>

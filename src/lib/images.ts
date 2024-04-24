@@ -30,7 +30,7 @@ function createImages() {
 
     async function load() {
         if (!get().length) {
-            const url = 'https://valexr.github.io/county/assets/photos.json';
+            const url = './assets/photos.json';
             const res = await fetch(url);
             set(await res.json());
         }
