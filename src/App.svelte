@@ -1,7 +1,6 @@
 <script lang="ts" context="module">
-    import { date, time } from "$lib/dates";
+    import { time } from "$lib/dates";
     import { images } from "$lib/images";
-    // import { t } from "$lib/utils";
 
     import DateForm from "$lib/components/DateForm.svelte";
     import Control from "$lib/components/Control.svelte";

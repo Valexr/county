@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
     import Button from "./Button.svelte";
-    import { convert, t } from "$lib/utils";
+    import { convert } from "$lib/utils";
 </script>
 
 <script lang="ts">

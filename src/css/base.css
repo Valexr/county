@@ -4,7 +4,7 @@ html {
     font-family: system-ui;
 }
 
-html::after {
+html::before {
     content: attr(title);
     position: absolute;
     inset: 0;
@@ -16,6 +16,16 @@ html::after {
     text-align: center;
 }
 
+html::after {
+    content: '';
+    background: rgba(0, 0, 0, 0.27);
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    overflow: hidden;
+}
+
+
 body {
     margin: 0;
     display: grid;
@@ -25,25 +35,6 @@ body {
     /* background-color: var(--light); */
     overflow: hidden;
 }
-
-body::after {
-    content: '';
-    background: rgba(0, 0, 0, 0.27);
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    overflow: hidden;
-}
-
-/* body::before {
-    content: attr(title);
-    position: absolute;
-    inset: 0;
-    top: 97.5%;
-    font-size: 0.8em;
-    font-weight: 300;
-    opacity: 0.69;
-} */
 
 header,
 footer {

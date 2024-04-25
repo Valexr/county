@@ -1,7 +1,6 @@
 import { Writable, derived } from 'svelte/store';
 import { dates } from './dates';
 import { quotes } from './quotes';
-import { random } from './utils';
 
 export const counters = derived<[Writable<StartDate[]>, Writable<Quote[]>], Counter[]>(([dates, quotes]),
     ([$dates, $quotes], set) => {
