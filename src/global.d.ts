@@ -29,8 +29,10 @@ type Slide = {
 }
 
 type Counter = {
+    [x: string]: any;
     id: number,
     title: string,
+    quote: Quote,
     start: string,
     years: number,
     months: number,
@@ -38,6 +40,7 @@ type Counter = {
     full: Record<string, number>
 }
 
-type StartDate = { start: string, title: string }
+type StartDate = { start: string, title: string, quote: Quote }
+type Quote = [text: string, author: string]
 
 type ChangeEventHandler<T> = Event & { currentTarget: EventTarget & T; }

@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-    import { date, time, counters, quote, dates } from "$lib/data";
+    import { date, time, dates } from "$lib/dates";
     import { images } from "$lib/images";
     import { t } from "$lib/utils";
 
@@ -21,8 +21,8 @@
 
     function setDate(e: SubmitEvent) {
         const data = new FormData(e.target as HTMLFormElement);
-        const date = Object.fromEntries(data) as StartDate;
-        dates.add(date);
+        const date = Object.fromEntries(data) as Partial<StartDate>;
+        dates.add(date as StartDate);
     }
 
     function changeDate(e: ChangeEventHandler<HTMLInputElement>) {

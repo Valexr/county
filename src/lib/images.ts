@@ -43,11 +43,11 @@ function createImages() {
         // const img = new Image();
         // img.src = src
         // await img.decode();
-        document.body.style.cssText = `
+        document.documentElement.style.cssText = `
             background: url(${src}) center no-repeat;
             background-size: cover;
         `;
-        document.body.title = alt
+        document.documentElement.title = alt
     }
 
     function prepare(limit = 1, size = { width: window.innerWidth, height: window.innerHeight }) {

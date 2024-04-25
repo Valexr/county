@@ -1,35 +1,31 @@
 <script lang="ts" context="module">
-    import { date, time, counters, quote, dates, quotes } from "$lib/data";
+    import { date, time, dates } from "$lib/dates";
     import { images } from "$lib/images";
-    import { t } from "$lib/utils";
+    // import { t } from "$lib/utils";
 
-    import DateForm from "$lib/components/Date.svelte";
+    import DateForm from "$lib/components/DateForm.svelte";
     import County from "$lib/components/County.svelte";
     import Quote from "$lib/components/Quote.svelte";
     import Icon from "$lib/components/Icon.svelte";
+    import { quotes } from "$lib/quotes";
+    import { counters } from "$lib/counters";
 </script>
 
 <script lang="ts">
     export let name: Name;
     export let repository: Repository;
 
-    let input: HTMLInputElement;
+    // let input: HTMLInputElement;
+    let active: string | undefined = "0";
 
-    function openDatepicker() {
-        input.focus();
-        input.showPicker();
-    }
+    // function openDatepicker() {
+    //     input.focus();
+    //     input.showPicker();
+    // }
 
-    function setDate(e: SubmitEvent) {
-        const data = new FormData(e.target as HTMLFormElement);
-        const date = Object.fromEntries(data) as StartDate;
-        dates.add(date);
-    }
-
-    function changeDate(e: ChangeEventHandler<HTMLInputElement>) {
-        const { id, type, value } = e.currentTarget;
-        const changed = type === "text" ? { title: value } : { start: value };
-        dates.change(Number(id), changed);
+    function randomQuote(e: MouseEvent) {
+        const { id } = e.target as HTMLButtonElement;
+        dates.quote(Number(id));
     }
 
     function deleteDate(e: MouseEvent) {
@@ -38,15 +34,11 @@
     }
 
     function intersection(section: HTMLElement) {
-        const observer = new IntersectionObserver(observe, {
-            root: document.body,
-            rootMargin: "0px",
-            threshold: 0,
-        });
+        const observer = new IntersectionObserver(observe, { threshold: 1.0 });
         observer.observe(section);
         function observe(entries: IntersectionObserverEntry[]) {
-            const active = entries.find((e) => e.isIntersecting);
-            console.log(entries, active);
+            const intersecting = entries.find((e) => e.isIntersecting);
+            active = intersecting?.target.id;
         }
     }
 
@@ -58,42 +50,41 @@
 </svelte:head>
 
 {#await images.load() then}
-    <main>
-        {#each $counters as counter, id}
-            <section use:intersection id={String(id)}>
-                <header>
-                    <DateForm {id} {counter} />
-                </header>
-                <County {counter} />
-                <footer>
-                    <button class="box" id={String(id)} on:click={deleteDate}>
-                        <!-- {t("Delete", "Удалить")} -->
-                        <Icon name="Delete" />
-                    </button>
-                </footer>
-            </section>
-        {/each}
-        <section id="add">
-            <DateForm />
-        </section>
-    </main>
     {#await quotes.load() then}
-        {#key $quote}
-            <Quote quote={$quote} href={repository} />
-        {/key}
+        <main>
+            {#each $counters as counter, id}
+                <section use:intersection id={String(id)}>
+                    <header>
+                        <DateForm {id} {counter} />
+                    </header>
+                    <County {counter} />
+                    {#key counter.quote}
+                        <Quote quote={counter.quote} href={repository} />
+                    {/key}
+                </section>
+            {/each}
+            <section id="add">
+                <DateForm />
+            </section>
+        </main>
+        {#if active}
+            <footer>
+                <button class="box" on:click={images.back}>
+                    <!-- {t("Image", "Картинка")} -->
+                    <Icon name="Images" />
+                </button>
+                <!-- <h2>{$time}</h2> -->
+                <button class="box" id={active} on:click={deleteDate}>
+                    <!-- {t("Delete", "Удалить")} -->
+                    <Icon name="Delete" />
+                </button>
+                <button class="box" id={active} on:click={randomQuote}>
+                    <!-- {t("Quote", "Цитата")} -->
+                    <Icon name="Quote" />
+                </button>
+            </footer>
+        {/if}
     {/await}
-
-    <footer>
-        <button class="box" on:click={images.back}>
-            <!-- {t("Image", "Картинка")} -->
-            <Icon name="Images" />
-        </button>
-        <h2>{$time}</h2>
-        <button class="box" on:click={quote.random}>
-            <!-- {t("Quote", "Цитата")} -->
-            <Icon name="Quote" />
-        </button>
-    </footer>
 {/await}
 
 <style>
@@ -119,7 +110,7 @@
         align-content: center;
     }
     section footer {
-        justify-content: center;
+        /* justify-content: center; */
         /* padding: 0; */
     }
 </style>

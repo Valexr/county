@@ -3,10 +3,10 @@ export function random(length: number) {
 }
 
 export function t(en: string, ru: string) {
-    return local() === 'ru' ? ru : en
+    return locale() === 'ru' ? ru : en
 }
 
-export function local() {
+export function locale() {
     return navigator.language.includes('ru') ? 'ru' : 'en'
 }
 
@@ -18,7 +18,7 @@ type Trans = {
 }
 
 export function convert(en: keyof Trans, count = 0) {
-    const RU = local() === 'ru'
+    const RU = locale() === 'ru'
     const FIRSTABLE = count === 1 || count > 20 && String(count).endsWith('1')
     const SECONDABLE = [2, 3, 4].includes(count)
 
