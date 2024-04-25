@@ -1,12 +1,13 @@
 <script lang="ts" context="module">
-    import { date, time, dates } from "$lib/dates";
+    import { date, time } from "$lib/dates";
     import { images } from "$lib/images";
     // import { t } from "$lib/utils";
 
     import DateForm from "$lib/components/DateForm.svelte";
+    import Control from "$lib/components/Control.svelte";
     import County from "$lib/components/County.svelte";
     import Quote from "$lib/components/Quote.svelte";
-    import Icon from "$lib/components/Icon.svelte";
+
     import { quotes } from "$lib/quotes";
     import { counters } from "$lib/counters";
 </script>
@@ -23,16 +24,6 @@
     //     input.showPicker();
     // }
 
-    function randomQuote(e: MouseEvent) {
-        const { id } = e.target as HTMLButtonElement;
-        dates.quote(Number(id));
-    }
-
-    function deleteDate(e: MouseEvent) {
-        const { id } = e.target as HTMLButtonElement;
-        dates.del(Number(id));
-    }
-
     function intersection(section: HTMLElement) {
         const observer = new IntersectionObserver(observe, { threshold: 1.0 });
         observer.observe(section);
@@ -41,8 +32,6 @@
             active = intersecting?.target.id;
         }
     }
-
-    $: console.log($date);
 </script>
 
 <svelte:head>
@@ -67,23 +56,13 @@
                 <DateForm />
             </section>
         </main>
-        {#if active}
-            <footer>
-                <button class="box" on:click={images.back}>
-                    <!-- {t("Image", "Картинка")} -->
-                    <Icon name="Images" />
-                </button>
-                <!-- <h2>{$time}</h2> -->
-                <button class="box" id={active} on:click={deleteDate}>
-                    <!-- {t("Delete", "Удалить")} -->
-                    <Icon name="Delete" />
-                </button>
-                <button class="box" id={active} on:click={randomQuote}>
-                    <!-- {t("Quote", "Цитата")} -->
-                    <Icon name="Quote" />
-                </button>
-            </footer>
-        {/if}
+        <footer class:active>
+            {#if active}
+                <Control {active} />
+            {:else}
+                <h2>{$time}</h2>
+            {/if}
+        </footer>
     {/await}
 {/await}
 
@@ -106,11 +85,20 @@
         scroll-snap-align: center;
         align-content: center;
     }
+    main {
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+        scrollbar-width: none; /* Firefox */
+    }
+    main::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
     section#add {
         align-content: center;
     }
-    section footer {
-        /* justify-content: center; */
-        /* padding: 0; */
+    footer {
+        justify-content: center;
+    }
+    footer.active {
+        justify-content: space-between;
     }
 </style>
