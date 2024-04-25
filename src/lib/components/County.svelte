@@ -57,12 +57,12 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: min(22.5vw, 27vh);
+        font-size: min(25vw, 27vh);
         font-weight: bold;
         display: flex;
         justify-content: center;
         gap: 0.25em;
-        margin-bottom: 0.25em;
+        margin-bottom: 0.5em;
     }
     ul li {
         position: relative;

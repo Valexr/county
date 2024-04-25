@@ -80,7 +80,7 @@
         scroll-snap-type: x mandatory;
     }
     main > * {
-        padding: 0 1em;
+        /* padding: 0 1em; */
         flex: 1 0 100%;
         scroll-snap-align: center;
         align-content: center;
