@@ -16,13 +16,7 @@
     export let name: Name;
     export let repository: Repository;
 
-    // let input: HTMLInputElement;
-    let active: string | undefined = "0";
-
-    // function openDatepicker() {
-    //     input.focus();
-    //     input.showPicker();
-    // }
+    let active: string | undefined;
 
     function intersection(section: HTMLElement) {
         const observer = new IntersectionObserver(observe, { threshold: 1.0 });

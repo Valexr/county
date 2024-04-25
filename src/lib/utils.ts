@@ -32,3 +32,7 @@ export function convert(en: keyof Trans, count = 0) {
     return RU ? trans[en] : count === 1 ? en.substring(0, en.length - 1) : en
 }
 
+function openDatepicker(input: HTMLInputElement) {
+    input.focus();
+    input.showPicker();
+}
