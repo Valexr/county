@@ -7,13 +7,16 @@
 
     let type: keyof Translate;
 
-    function length(counter: Counter) {
+    function length(counter: Counter, type: keyof Translate) {
         const { id, title, quote, start, full, ...rest } = counter;
-        return Object.values(rest).filter((r) => r).length;
+        const values = Object.values(rest)
+            .filter((r) => r)
+            .join("");
+        return !type ? values.length : String(full[type]).length;
     }
 </script>
 
-<ul style="--county-length: {length(counter)}">
+<ul style="--county-length: {length(counter, type)}">
     {#if type === "months"}
         <County name="months" value={counter.full.months} bind:type />
     {:else if type === "weeks"}

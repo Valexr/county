@@ -33,7 +33,6 @@ type Slide = {
 }
 
 type Counter = {
-    // [x: string]: any;
     id: number,
     title: string,
     quote: Quote,
