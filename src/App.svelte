@@ -4,7 +4,7 @@
 
     import DateForm from "$lib/components/DateForm.svelte";
     import Control from "$lib/components/Control.svelte";
-    import County from "$lib/components/County.svelte";
+    import Counter from "$lib/components/Counter.svelte";
     import Quote from "$lib/components/Quote.svelte";
 
     import { quotes } from "$lib/quotes";
@@ -18,7 +18,7 @@
     let active: string | undefined;
 
     function intersection(section: HTMLElement) {
-        const observer = new IntersectionObserver(observe, { threshold: 1.0 });
+        const observer = new IntersectionObserver(observe, { threshold: 0.5 });
         observer.observe(section);
         function observe(entries: IntersectionObserverEntry[]) {
             const intersecting = entries.find((e) => e.isIntersecting);
@@ -39,7 +39,7 @@
                     <header>
                         <DateForm {id} {counter} />
                     </header>
-                    <County {counter} />
+                    <Counter {counter} />
                     {#key counter.quote}
                         <Quote quote={counter.quote} href={repository} />
                     {/key}

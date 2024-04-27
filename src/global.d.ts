@@ -3,6 +3,10 @@ declare module '*.svg' {
     export default content;
 }
 
+interface Date {
+    getElapsedTime(): string;
+}
+
 type Name = string
 type Repository = string
 
@@ -29,7 +33,7 @@ type Slide = {
 }
 
 type Counter = {
-    [x: string]: any;
+    // [x: string]: any;
     id: number,
     title: string,
     quote: Quote,
@@ -37,7 +41,16 @@ type Counter = {
     years: number,
     months: number,
     days: number,
+    weeks: number,
     full: Record<string, number>
+}
+
+type Translate = {
+    years: string;
+    months: string;
+    days: string;
+    weeks: string;
+    hours: string;
 }
 
 type StartDate = { start: string, title: string, quote: Quote }

@@ -29,10 +29,11 @@
                 id={String(id)}
                 type="date"
                 name="start"
+                max={$date}
                 class:clear={counter}
                 value={counter?.start || $date}
                 required
-                on:change={changeDate}
+                on:input={changeDate}
             />
         </label>
         <label>
