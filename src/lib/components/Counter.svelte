@@ -51,7 +51,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: min(calc(100vw / var(--county-length)), 27vh);
+        font-size: calc(100vw / var(--county-length) + 1em);
         font-weight: bold;
         display: flex;
         justify-content: center;
