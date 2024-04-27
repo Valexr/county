@@ -18,7 +18,7 @@
     let active: string | undefined;
 
     function intersection(section: HTMLElement) {
-        const observer = new IntersectionObserver(observe, { threshold: 0.5 });
+        const observer = new IntersectionObserver(observe, { threshold: 1 });
         observer.observe(section);
         function observe(entries: IntersectionObserverEntry[]) {
             const intersecting = entries.find((e) => e.isIntersecting);
