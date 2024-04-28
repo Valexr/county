@@ -12,7 +12,7 @@
         const values = Object.values(rest)
             .filter((r) => r)
             .join("");
-        return !type ? values.length : String(full[type]).length;
+        // return !type ? values.length : String(full[type]).length;
     }
 </script>
 
@@ -51,7 +51,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        font-size: calc(100vw / var(--county-length) + 1em);
+        font-size: calc(100vw / var(--county-length, 6) + 1em);
         font-weight: bold;
         display: flex;
         justify-content: center;
