@@ -31,32 +31,30 @@
     <title>{name}</title>
 </svelte:head>
 
-{#await images.load() then}
-    {#await quotes.load() then}
-        <main>
-            {#each $counters as counter, id}
-                <section use:intersection id={String(id)}>
-                    <header>
-                        <DateForm {id} {counter} />
-                    </header>
-                    <Counter {counter} />
-                    {#key counter.quote}
-                        <Quote quote={counter.quote} href={repository} />
-                    {/key}
-                </section>
-            {/each}
-            <section id="add">
-                <DateForm />
+{#await Promise.all([images.load(), quotes.load()]) then}
+    <main>
+        {#each $counters as counter, id}
+            <section use:intersection id={String(id)}>
+                <header>
+                    <DateForm {id} {counter} />
+                </header>
+                <Counter {counter} />
+                {#key counter.quote}
+                    <Quote quote={counter.quote} href={repository} />
+                {/key}
             </section>
-        </main>
-        <footer class:active>
-            {#if active}
-                <Control {active} />
-            {:else}
-                <h2>{$time}</h2>
-            {/if}
-        </footer>
-    {/await}
+        {/each}
+        <section id="add">
+            <DateForm />
+        </section>
+    </main>
+    <footer class:active>
+        {#if active}
+            <Control {active} />
+        {:else}
+            <h2>{$time}</h2>
+        {/if}
+    </footer>
 {/await}
 
 <style>
@@ -71,20 +69,18 @@
         max-width: 100vw;
         overflow: scroll;
         scroll-snap-type: x mandatory;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    main::-webkit-scrollbar {
+        display: none;
     }
     main > * {
-        /* padding: 0 1em; */
         flex: 1 0 100%;
         scroll-snap-align: center;
         align-content: center;
     }
-    main {
-        -ms-overflow-style: none; /* Internet Explorer 10+ */
-        scrollbar-width: none; /* Firefox */
-    }
-    main::-webkit-scrollbar {
-        display: none; /* Safari and Chrome */
-    }
+
     section#add {
         align-content: center;
     }

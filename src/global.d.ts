@@ -3,8 +3,18 @@ declare module '*.svg' {
     export default content;
 }
 
+type Elapsed = {
+    years: number,
+    months: number,
+    days: number,
+    weeks: number,
+    hours: number,
+    minutes: number,
+    seconds: number,
+    ms: number
+}
 interface Date {
-    getElapsedTime(): string;
+    elapsed(): Elapsed;
 }
 
 type Name = string
