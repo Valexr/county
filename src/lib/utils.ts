@@ -31,3 +31,21 @@ function openDatepicker(input: HTMLInputElement) {
     input.showPicker();
 }
 
+function elapsed(start: number) {
+    const diffDate = new Date(Date.now() - start);
+    return (
+        "Elapsed Time: Years: " +
+        (diffDate.getFullYear() - 1970) +
+        ", Months: " +
+        diffDate.getMonth() +
+        ", Days: " +
+        (diffDate.getDate() - 1) +
+        ", Hours: " +
+        diffDate.getHours() +
+        ", Minutes: " +
+        diffDate.getMinutes() +
+        ", Seconds: " +
+        diffDate.getSeconds()
+    );
+};
+
