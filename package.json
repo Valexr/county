@@ -15,11 +15,11 @@
     },
     "devDependencies": {
         "@types/luxon": "^3.4.2",
-        "@types/node": "^20.12.10",
+        "@types/node": "^20.12.11",
         "esbuild": "^0.20.2",
         "esbuild-svelte": "^0.8.0",
         "luxon": "^3.4.4",
-        "svelte": "^4.2.15",
+        "svelte": "^4.2.16",
         "svelte-preprocess": "^5.1.4",
         "typescript": "^5.4.5"
     }
