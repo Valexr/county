@@ -1,4 +1,4 @@
-import { getable } from "./getable";
+import { cacheable } from "./cacheable";
 
 type Size = {
     width: number;
@@ -26,7 +26,7 @@ export const images = createImages()
 
 function createImages() {
     type API = [string, number, string]
-    const { subscribe, set, get, update } = getable<Array<API>>([])
+    const { subscribe, set, get, update } = cacheable<Array<API>>('County-Images', [], true)
 
     async function load() {
         if (!get().length) {
