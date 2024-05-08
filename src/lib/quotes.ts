@@ -3,7 +3,7 @@ import { locale, random } from "./utils";
 
 export const quotes = createQuotes()
 function createQuotes() {
-    const { subscribe, set, get, update } = cacheable<Quote[]>('County_Quotes', [['', '']], true)
+    const { subscribe, set, get, update } = cacheable<Quote[]>('County_Quotes', [], true)
     return {
         subscribe, set, get, update,
         async load() {

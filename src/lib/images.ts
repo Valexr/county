@@ -26,7 +26,7 @@ export const images = createImages()
 
 function createImages() {
     type API = [string, number, string]
-    const { subscribe, set, get, update } = cacheable<Array<API>>('County-Images', [], true)
+    const { subscribe, set, get, update } = cacheable<Array<API>>('County_Images', [], true)
 
     async function load() {
         if (!get().length) {

@@ -4,7 +4,7 @@ import { quotes } from './quotes';
 
 export const dates = createDates()
 function createDates() {
-    const { subscribe, get, set, update } = cacheable<Array<StartDate>>('CountyDates', [], true)
+    const { subscribe, get, set, update } = cacheable<Array<StartDate>>('County_Dates', [], true)
     return {
         subscribe, get, set, update,
         add(date: StartDate) {
