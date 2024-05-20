@@ -1,19 +1,18 @@
 <script lang="ts" context="module">
-    import { time } from "$lib/dates";
-    import { images } from "$lib/images";
+    import { time } from '$lib/dates';
+    import { images } from '$lib/images';
 
-    import DateForm from "$lib/components/DateForm.svelte";
-    import Control from "$lib/components/Control.svelte";
-    import Counter from "$lib/components/Counter.svelte";
-    import Quote from "$lib/components/Quote.svelte";
+    import DateForm from '$lib/components/DateForm.svelte';
+    import Control from '$lib/components/Control.svelte';
+    import Counter from '$lib/components/Counter.svelte';
+    import Quote from '$lib/components/Quote.svelte';
 
-    import { quotes } from "$lib/quotes";
-    import { counters } from "$lib/counters";
+    import { quotes } from '$lib/quotes';
+    import { counters } from '$lib/counters';
 </script>
 
 <script lang="ts">
     export let name: Name;
-    export let repository: Repository;
 
     let active: string | undefined;
 
@@ -40,7 +39,7 @@
                 </header>
                 <Counter {counter} />
                 {#key counter.quote}
-                    <Quote quote={counter.quote} href={repository} />
+                    <Quote quote={counter.quote} />
                 {/key}
             </section>
         {/each}
@@ -58,7 +57,7 @@
 {/await}
 
 <style>
-    @import "app.css";
+    @import 'app.css';
 
     header {
         justify-content: center;
