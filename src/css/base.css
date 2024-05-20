@@ -1,33 +1,31 @@
 html {
-    height: 100dvh;
+    height: 100vh;
+    /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
     font-family: system-ui;
 }
 
-html:fullscreen {
-    height: 100vh;
-}
-
 html::before {
-    content: attr(title);
-    position: absolute;
-    inset: 97.5% 0 0;
-    font-size: 0.8rem;
-    font-weight: 300;
-    font-family: inherit;
-    opacity: 0.69;
-    text-align: center;
-}
-
-html::after {
     content: '';
     background: rgba(0, 0, 0, 0.27);
     position: absolute;
     z-index: -1;
     inset: 0;
     overflow: hidden;
-    height: 100%;
 }
 
+html::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-family: inherit;
+    opacity: 0.69;
+    text-align: center;
+}
 
 body {
     margin: 0;
