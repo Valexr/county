@@ -24,22 +24,11 @@
             active = intersecting?.target.id;
         }
     }
-
-    function resize(window: Window) {
-        setVH();
-        window.onresize = setVH;
-        function setVH() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
-    }
 </script>
 
 <svelte:head>
     <title>{name}</title>
 </svelte:head>
-
-<svelte:window use:resize />
 
 {#await Promise.all([images.load(), quotes.load()]) then}
     <main>
