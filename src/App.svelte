@@ -15,7 +15,6 @@
     export let name: Name;
 
     let active: string | undefined;
-    let WH = 0;
 
     function intersection(section: HTMLElement) {
         const observer = new IntersectionObserver(observe, { threshold: 1 });
@@ -30,7 +29,7 @@
         setVH();
         window.onresize = setVH;
         function setVH() {
-            const vh = window.innerHeight * 0.01;
+            const vh = window.outerHeight * 0.01;
             document.documentElement.style.setProperty('--vh', `${vh}px`);
         }
     }
