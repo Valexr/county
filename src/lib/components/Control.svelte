@@ -1,8 +1,8 @@
 <script lang="ts" context="module">
-    import Icon from "$lib/components/Icon.svelte";
+    import Icon from '$lib/components/Icon.svelte';
 
-    import { images } from "$lib/images";
-    import { dates } from "$lib/dates";
+    import { images } from '$lib/images';
+    import { dates } from '$lib/dates';
 </script>
 
 <script lang="ts">
@@ -28,3 +28,15 @@
 <button class="box" id={active} on:click={randomQuote}>
     <Icon name="Quote" />
 </button>
+
+<style>
+    button {
+        background: transparent;
+    }
+    button:hover {
+        background-color: #f2f2f250;
+    }
+    button:hover:active {
+        background-color: #f2f2f200;
+    }
+</style>
