@@ -15,8 +15,8 @@
     },
     "devDependencies": {
         "@types/luxon": "^3.4.2",
-        "@types/node": "^20.12.12",
-        "esbuild": "^0.20.2",
+        "@types/node": "^20.14.0",
+        "esbuild": "^0.21.4",
         "esbuild-svelte": "^0.8.1",
         "luxon": "^3.4.4",
         "svelte": "^4.2.17",
