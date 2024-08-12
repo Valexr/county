@@ -1,6 +1,6 @@
 import { build, context } from 'esbuild';
 import svelte from 'esbuild-svelte';
-import preprocess from 'svelte-preprocess';
+import { sveltePreprocess } from 'svelte-preprocess';
 import rm from './env/rm.js';
 import log from './env/log.js';
 import meta from './env/meta.js';
@@ -13,14 +13,14 @@ const svelteOptions = {
     compilerOptions: {
         dev: DEV,
         css: 'external',
-        immutable: true
+        immutable: true,
     },
     preprocess: [
-        preprocess({
+        sveltePreprocess({
             sourceMap: DEV,
             typescript: true,
         }),
-    ]
+    ],
 };
 
 const buildOptions = {
@@ -33,7 +33,7 @@ const buildOptions = {
     loader: { '.svg': 'text' },
     plugins: [svelte(svelteOptions), log],
     inject: DEV ? ['./env/lr.js'] : [],
-    legalComments: "none",
+    legalComments: 'none',
     logLevel: 'info',
     metafile: !DEV,
     mainFields: ['svelte', 'module', 'main'],
@@ -50,7 +50,7 @@ if (DEV) {
     SPA && proxy().listen(8080);
 
     process.on('SIGTERM', ctx.dispose);
-    process.on("exit", ctx.dispose);
+    process.on('exit', ctx.dispose);
 } else {
     await meta(await build(buildOptions));
 }
