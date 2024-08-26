@@ -19,7 +19,7 @@
         "esbuild": "^0.23.1",
         "esbuild-svelte": "^0.8.1",
         "luxon": "^3.5.0",
-        "svelte": "^4.2.18",
+        "svelte": "^4.2.19",
         "svelte-preprocess": "^6.0.2",
         "typescript": "^5.5.4"
     }
