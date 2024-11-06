@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { time } from '$lib/dates';
     import { images } from '$lib/images';
 
@@ -12,9 +12,8 @@
 </script>
 
 <script lang="ts">
-    export let name: Name;
-
-    let active: string | undefined;
+    let { name } = $props();
+    let active: string | undefined = $state();
 
     function intersection(section: HTMLElement) {
         const observer = new IntersectionObserver(observe, { threshold: 1 });

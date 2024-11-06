@@ -1,9 +1,13 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { fade } from 'svelte/transition';
+
+    interface Props {
+        quote: [text: string, author: string]
+    }
 </script>
 
 <script lang="ts">
-    export let quote: [text: string, author: string];
+    let { quote }: Props = $props();
 </script>
 
 {#if quote}

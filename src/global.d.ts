@@ -60,6 +60,7 @@ type Translate = {
     days: string;
     weeks: string;
     hours: string;
+    ''
 }
 
 type StartDate = { start: string, title: string, quote: Quote }

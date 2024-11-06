@@ -1,19 +1,21 @@
-<script lang="ts" context="module">
-    import Button from "./Button.svelte";
-    import { convert } from "$lib/utils";
+<script lang="ts" module>
+    import Button from './Button.svelte';
+    import { convert } from '$lib/utils';
+
+    interface Props {
+        id?: string;
+        value: number;
+        type: keyof Translate;
+        name: keyof Translate;
+    }
 </script>
 
 <script lang="ts">
-    export let name: keyof Translate;
-    export let value: number;
-    export let type: keyof Translate;
-    export let id = "";
+    let { id = '', value, type = $bindable(), name }: Props = $props();
 </script>
 
 <li id={convert(name, value)}>
-    <Button {id} bind:type>
-        {value}
-    </Button>
+    <Button {id} bind:type>{value}</Button>
 </li>
 
 <style>

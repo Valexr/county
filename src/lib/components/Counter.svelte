@@ -1,29 +1,24 @@
-<script lang="ts" context="module">
-    import County from "./County.svelte";
-</script>
+<script lang="ts" module>
+    import County from './County.svelte';
 
-<script lang="ts">
-    export let counter: Counter;
-
-    let type: keyof Translate;
-
-    function length(counter: Counter, type: keyof Translate) {
-        const { id, title, quote, start, full, ...rest } = counter;
-        const values = Object.values(rest)
-            .filter((r) => r)
-            .join("");
-        // return !type ? values.length : String(full[type]).length;
+    interface Props {
+        counter: Counter
     }
 </script>
 
-<ul style="--county-length: {length(counter, type)}">
-    {#if type === "months"}
+<script lang="ts">
+    let { counter }: Props = $props();
+    let type: keyof Translate = $state('');
+</script>
+
+<ul>
+    {#if type === 'months'}
         <County name="months" value={counter.full.months} bind:type />
-    {:else if type === "weeks"}
+    {:else if type === 'weeks'}
         <County name="weeks" value={counter.full.weeks} bind:type />
-    {:else if type === "days"}
+    {:else if type === 'days'}
         <County name="days" value={counter.full.days} bind:type />
-    {:else if type === "hours"}
+    {:else if type === 'hours'}
         <County name="hours" value={counter.full.hours} bind:type />
     {:else}
         {#if counter.years}

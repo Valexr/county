@@ -1,13 +1,15 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import { dates, date } from "$lib/dates";
     import { t } from "$lib/utils";
+
+    interface Props { id?: number, counter?: Counter }
 </script>
 
 <script lang="ts">
-    export let id = 0;
-    export let counter: Counter | undefined = undefined;
+    let { id = 0, counter }: Props = $props();
 
     function setDate(e: SubmitEvent) {
+        e.preventDefault()
         if (counter) return;
         const data = new FormData(e.target as HTMLFormElement);
         const date = Object.fromEntries(data) as Partial<StartDate>;
@@ -22,7 +24,7 @@
     }
 </script>
 
-<form action="post" on:submit|preventDefault={setDate}>
+<form action="post" onsubmit={setDate}>
     <fieldset>
         <label>
             <input
@@ -33,7 +35,7 @@
                 class:clear={counter}
                 value={counter?.start || $date}
                 required
-                on:input={changeDate}
+                oninput={changeDate}
             />
         </label>
         <label>
@@ -47,7 +49,7 @@
                 placeholder={t("Counter name", "Имя счётчика")}
                 autocomplete="off"
                 required
-                on:change={changeDate}
+                onchange={changeDate}
             />
         </label>
         {#if !counter}

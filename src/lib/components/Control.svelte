@@ -1,12 +1,14 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
     import Icon from '$lib/components/Icon.svelte';
 
     import { images } from '$lib/images';
     import { dates } from '$lib/dates';
+
+    interface Props {active: string | undefined}
 </script>
 
 <script lang="ts">
-    export let active: string | undefined;
+    let { active }: Props = $props();
 
     function randomQuote(e: MouseEvent) {
         const { id } = e.target as HTMLButtonElement;
@@ -19,13 +21,13 @@
     }
 </script>
 
-<button class="box" on:click={images.back}>
+<button class="box" onclick={images.back}>
     <Icon name="Images" />
 </button>
-<button class="box" id={active} on:click={deleteDate}>
+<button class="box" id={active} onclick={deleteDate}>
     <Icon name="Delete" />
 </button>
-<button class="box" id={active} on:click={randomQuote}>
+<button class="box" id={active} onclick={randomQuote}>
     <Icon name="Quote" />
 </button>
 

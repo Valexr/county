@@ -1,4 +1,4 @@
-import { Writable, derived } from 'svelte/store';
+import { type Writable, derived } from 'svelte/store';
 import { dates } from './dates';
 import { quotes } from './quotes';
 import { DateTime, Interval } from "luxon";
