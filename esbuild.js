@@ -14,6 +14,8 @@ const svelteOptions = {
         dev: DEV,
         css: 'external',
         immutable: true,
+        runes: true,
+        modernAst: true
     },
     preprocess: [
         sveltePreprocess({
@@ -25,7 +27,7 @@ const svelteOptions = {
 
 const buildOptions = {
     bundle: true,
-    minify: !DEV,
+    // minify: !DEV,
     sourcemap: DEV,
     entryPoints: ['src/app.ts'],
     outdir: 'public/build',
