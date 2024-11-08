@@ -27,7 +27,7 @@ const svelteOptions = {
 
 const buildOptions = {
     bundle: true,
-    // minify: !DEV,
+    minify: !DEV,
     sourcemap: DEV,
     entryPoints: ['src/app.ts'],
     outdir: 'public/build',
