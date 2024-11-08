@@ -1,27 +1,14 @@
-<script lang="ts" module>
-    interface Props {
-        id: string,
-        name: string,
-        size: string,
-        color: string,
-        rotate: number,
-        spin: boolean,
-        style: string,
-        bordered: boolean
-    }
-</script>
-
 <script lang="ts">
     let {
-        id = "",
-        name = "Close",
-        size = "16px",
-        color = "currentColor",
+        id = '',
+        name = 'Close',
+        size = '16px',
+        color = 'currentColor',
         rotate = 0,
         spin = false,
-        style = "",
+        style = '',
         bordered = false,
-    }: Partial<Props> = $props()
+    } = $props();
 </script>
 
 <svg

@@ -3,12 +3,10 @@
 
     import { images } from '$lib/images';
     import { dates } from '$lib/dates';
-
-    interface Props {active: string | undefined}
 </script>
 
 <script lang="ts">
-    let { active }: Props = $props();
+    let { active = '' } = $props();
 
     function randomQuote(e: MouseEvent) {
         const { id } = e.target as HTMLButtonElement;
