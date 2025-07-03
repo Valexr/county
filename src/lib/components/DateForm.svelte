@@ -1,15 +1,18 @@
 <script lang="ts" module>
-    import { dates, date } from "$lib/dates";
-    import { t } from "$lib/utils";
+    import { dates, date } from '$lib/dates';
+    import { t } from '$lib/utils';
 
-    interface Props { id?: number, counter?: Counter }
+    interface Props {
+        id?: number;
+        counter?: Counter;
+    }
 </script>
 
 <script lang="ts">
     let { id = 0, counter }: Props = $props();
 
     function setDate(e: SubmitEvent) {
-        e.preventDefault()
+        e.preventDefault();
         if (counter) return;
         const data = new FormData(e.target as HTMLFormElement);
         const date = Object.fromEntries(data) as Partial<StartDate>;
@@ -45,8 +48,8 @@
                 name="title"
                 maxlength="15"
                 class:clear={counter}
-                value={counter?.title || ""}
-                placeholder={t("Counter name", "Имя счётчика")}
+                value={counter?.title || ''}
+                placeholder={t('Counter name', 'Имя счётчика')}
                 autocomplete="off"
                 required
                 onchange={changeDate}
@@ -56,7 +59,7 @@
             <fieldset>
                 <h2>
                     <button>
-                        {t("Add counter", "Добавить счётчик")}
+                        {t('Add counter', 'Добавить счётчик')}
                     </button>
                 </h2>
             </fieldset>
@@ -95,8 +98,9 @@
         color: inherit;
         /* max-width: 20em; */
         margin: auto;
+        appearance: unset;
     }
-    input[type="date"]::-webkit-datetime-edit {
+    input[type='date']::-webkit-datetime-edit {
         flex: 1;
     }
     input.clear {
