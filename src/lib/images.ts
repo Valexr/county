@@ -110,19 +110,19 @@ function createImages() {
     };
 }
 
-fetch('https://api.pexels.com/v1/search?query=nature&per_page=1', {
-    headers: {
-        Authorization:
-            'KEoDTMKOp4RqsKUwVmHD546Tp0kJHbVjM3RADB2vyT7QScmoixrY3it3',
-    },
-})
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+// fetch('https://api.pexels.com/v1/search?query=nature&per_page=1', {
+//     headers: {
+//         Authorization:
+//             'KEoDTMKOp4RqsKUwVmHD546Tp0kJHbVjM3RADB2vyT7QScmoixrY3it3',
+//     },
+// })
+//     .then((response) => response.json())
+//     .then((data) => console.log(data));
 
-fetch('https://api.freepik.com/v1/ai/resources', {
-    headers: {
-        'x-freepik-api-key': 'FPSXde59496d3238f1c6ab2f913f0fa7b3f8',
-    },
-})
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+// fetch('https://api.freepik.com/v1/ai/resources', {
+//     headers: {
+//         'x-freepik-api-key': 'FPSXde59496d3238f1c6ab2f913f0fa7b3f8',
+//     },
+// })
+//     .then((response) => response.json())
+//     .then((data) => console.log(data));
