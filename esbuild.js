@@ -50,9 +50,14 @@ if (DEV) {
     const ctx = await context(buildOptions);
 
     await ctx.watch();
-    await ctx.serve({ servedir: 'public' });
+    await ctx.serve({ 
+        host: '0.0.0.0', 
+        servedir: 'public',
+        certfile:'localhost.crt',
+        keyfile: 'localhost.key'
+    });
 
-    SPA && proxy().listen(8080);
+    // SPA && proxy().listen(8080);
 
     process.on('SIGTERM', ctx.dispose);
     process.on('exit', ctx.dispose);

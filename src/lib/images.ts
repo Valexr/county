@@ -1,4 +1,4 @@
-import { cacheable } from "./cacheable";
+import { cacheable } from './cacheable';
 
 type Size = {
     width: number;
@@ -27,14 +27,14 @@ export const images = createImages();
 function createImages() {
     type API = [string, number, string];
     const { subscribe, set, get, update } = cacheable<Array<API>>(
-        "County_Images",
+        'County_Images',
         [],
-        true,
+        true
     );
 
     async function load() {
         if (!get().length) {
-            const url = "./assets/photos.json";
+            const url = './assets/photos.json';
             const res = await fetch(url);
             set(await res.json());
         }
@@ -56,10 +56,10 @@ function createImages() {
 
     function prepare(
         limit = 1,
-        size = { width: window.innerWidth, height: window.innerHeight },
+        size = { width: window.innerWidth, height: window.innerHeight }
     ) {
         const indexes = Array.from({ length: limit }, () =>
-            Math.floor(Math.random() * 24644),
+            Math.floor(Math.random() * 24644)
         );
         return get().reduce(
             (acc: ImageSchema[], [src, aspectRatio, author], id) => {
@@ -80,7 +80,7 @@ function createImages() {
                 }
                 return acc;
             },
-            [],
+            []
         );
 
         function ratio(size: number) {
@@ -88,7 +88,11 @@ function createImages() {
         }
 
         function applyRatio(src: Size, size: Size): Size {
-            const ratio = Math.min(size.width / src.width, size.height, src.height);
+            const ratio = Math.min(
+                size.width / src.width,
+                size.height,
+                src.height
+            );
             return {
                 width: Math.round(src.width * ratio),
                 height: Math.round(src.height * ratio),
@@ -105,3 +109,20 @@ function createImages() {
         back,
     };
 }
+
+fetch('https://api.pexels.com/v1/search?query=nature&per_page=1', {
+    headers: {
+        Authorization:
+            'KEoDTMKOp4RqsKUwVmHD546Tp0kJHbVjM3RADB2vyT7QScmoixrY3it3',
+    },
+})
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+
+fetch('https://api.freepik.com/v1/ai/resources', {
+    headers: {
+        'x-freepik-api-key': 'FPSXde59496d3238f1c6ab2f913f0fa7b3f8',
+    },
+})
+    .then((response) => response.json())
+    .then((data) => console.log(data));
