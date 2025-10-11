@@ -21,7 +21,7 @@ function createImages() {
 
     async function back() {
         const { src, alt } = await prepare();
-        document.body.style.cssText = `
+        document.documentElement.style.cssText = `
             background: url(${src}) center no-repeat;
             background-size: cover;
         `;

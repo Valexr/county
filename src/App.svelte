@@ -63,6 +63,7 @@
         padding: 0;
     }
     main {
+        gap: 1rem;
         display: flex;
         overflow: scroll;
         scroll-snap-type: x mandatory;
