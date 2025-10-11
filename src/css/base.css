@@ -1,6 +1,7 @@
 body,
 html {
     min-height: 100dvh;
+    font-family: system-ui;
 }
 
 body {
@@ -8,21 +9,9 @@ body {
     display: grid;
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
-    font-family: monospace;
     text-align: center;
     overflow-x: hidden;
     background-color: var(--light);
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
-header > * {
-    margin: 0;
 }
 
 button {
