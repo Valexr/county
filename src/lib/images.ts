@@ -25,7 +25,7 @@ function createImages() {
             background: url(${src}) center no-repeat;
             background-size: cover;
         `;
-        document.body.title = alt;
+        document.documentElement.title = alt;
     }
 
     async function prepare() {

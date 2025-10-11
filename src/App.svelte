@@ -28,7 +28,7 @@
 <svelte:head>
     <title>{name}</title>
 </svelte:head>
-<header></header>
+
 {#await Promise.all([images.load(), quotes.load()]) then}
     <main>
         {#each $counters as counter, id}
@@ -63,9 +63,10 @@
         padding: 0;
     }
     main {
-        display: grid;
+        /* display: grid; */
+        /* grid-auto-flow: row dense; */
         display: flex;
-        max-width: 100vw;
+        /* max-width: 100vw; */
         overflow: scroll;
         scroll-snap-type: x mandatory;
         -ms-overflow-style: none;
