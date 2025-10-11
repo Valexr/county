@@ -12,7 +12,7 @@ function createImages() {
 
     async function load() {
         if (!get().length) {
-            const url = './assets/photos.json';
+            const url = './assets/data/photos.json';
             const res = await fetch(url);
             set(await res.json());
         }
@@ -21,11 +21,11 @@ function createImages() {
 
     async function back() {
         const { src, alt } = await prepare();
-        document.documentElement.style.cssText = `
+        document.body.style.cssText = `
             background: url(${src}) center no-repeat;
             background-size: cover;
         `;
-        document.documentElement.title = alt;
+        document.body.title = alt;
     }
 
     async function prepare() {
