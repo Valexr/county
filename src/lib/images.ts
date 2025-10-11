@@ -73,7 +73,9 @@ function createImages() {
                 acc.push({
                     id,
                     // src: `https://images.unsplash.com/photo-${src}${query}`,
-                    src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${max.width}`,
+                    src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${ratio(
+                        max.width
+                    )}`,
                     ...max,
                     alt: `Image from Burst Shopify`,
                     // ...applyRatio(source, max),
