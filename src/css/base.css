@@ -1,12 +1,13 @@
 body,
 html {
-    min-height: 100dvh;
+    min-height: 100vh;
     font-family: system-ui;
 }
 
 body {
     margin: 0;
     display: grid;
+    height: 100vh;
     grid-template-rows: 1fr auto;
     grid-template-columns: 1fr;
     text-align: center;

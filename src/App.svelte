@@ -63,10 +63,7 @@
         padding: 0;
     }
     main {
-        /* display: grid; */
-        /* grid-auto-flow: row dense; */
         display: flex;
-        /* max-width: 100vw; */
         overflow: scroll;
         scroll-snap-type: x mandatory;
         -ms-overflow-style: none;
