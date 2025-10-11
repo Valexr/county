@@ -62,7 +62,6 @@ function createImages() {
             Math.floor(Math.random() * 24403)
         );
         return get().reduce((acc: ImageSchema[], name, id) => {
-            console.log(name);
             if (indexes.includes(id)) {
                 // const source = {
                 //     width: size.height * (aspectRatio / 10),

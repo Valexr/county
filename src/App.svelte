@@ -16,9 +16,9 @@
     let active: string | undefined = $state();
 
     function intersection(section: HTMLElement) {
-        const observer = new IntersectionObserver(observe, { threshold: 1 });
+        const observer = new IntersectionObserver(observing, { threshold: 1 });
         observer.observe(section);
-        function observe(entries: IntersectionObserverEntry[]) {
+        function observing(entries: IntersectionObserverEntry[]) {
             const intersecting = entries.find((e) => e.isIntersecting);
             active = intersecting?.target.id;
         }
