@@ -1,5 +1,4 @@
 import { cacheable } from './cacheable';
-// import { writeFile } from 'fs';
 
 type Size = {
     width: number;
@@ -77,7 +76,7 @@ function createImages() {
                     // src: `https://images.unsplash.com/photo-${src}${query}`,
                     src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${max.width}`,
                     ...max,
-                    // alt: `Image by ${author} from Unsplash`,
+                    alt: `Image from Burst Shopify`,
                     // ...applyRatio(source, max),
                 });
             }
