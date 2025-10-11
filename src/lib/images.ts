@@ -1,4 +1,5 @@
 import { cacheable } from './cacheable';
+// import { writeFile } from 'fs';
 
 type Size = {
     width: number;
@@ -59,29 +60,29 @@ function createImages() {
         size = { width: window.innerWidth, height: window.innerHeight }
     ) {
         const indexes = Array.from({ length: limit }, () =>
-            Math.floor(Math.random() * 24644)
+            Math.floor(Math.random() * 24403)
         );
-        return get().reduce(
-            (acc: ImageSchema[], [src, aspectRatio, author], id) => {
-                if (indexes.includes(id)) {
-                    const source = {
-                        width: size.height * (aspectRatio / 10),
-                        height: size.height,
-                    };
-                    const max = { width: size.width, height: size.height };
-                    const query = `?w=${ratio(applyRatio(source, max).width)}`;
+        return get().reduce((acc: ImageSchema[], name, id) => {
+            console.log(name);
+            if (indexes.includes(id)) {
+                // const source = {
+                //     width: size.height * (aspectRatio / 10),
+                //     height: size.height,
+                // };
+                const max = { width: size.width, height: size.height };
+                // const query = `?w=${ratio(applyRatio(source, max).width)}`;
 
-                    acc.push({
-                        id,
-                        src: `https://images.unsplash.com/photo-${src}${query}`,
-                        alt: `Image by ${author} from Unsplash`,
-                        ...applyRatio(source, max),
-                    });
-                }
-                return acc;
-            },
-            []
-        );
+                acc.push({
+                    id,
+                    // src: `https://images.unsplash.com/photo-${src}${query}`,
+                    src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${max.width}`,
+                    ...max,
+                    // alt: `Image by ${author} from Unsplash`,
+                    // ...applyRatio(source, max),
+                });
+            }
+            return acc;
+        }, []);
 
         function ratio(size: number) {
             return size * devicePixelRatio;
@@ -126,3 +127,39 @@ function createImages() {
 // })
 //     .then((response) => response.json())
 //     .then((data) => console.log(data));
+
+// fetch('https://www.shopify.com/stock-photos/photos', {
+//     headers: {
+//         // 'x-freepik-api-key': 'FPSXde59496d3238f1c6ab2f913f0fa7b3f8',
+//         // mode: 'no-cors',
+//         credentials: 'omit',
+//         Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+//     },
+// })
+//     .then((response) => response.text())
+//     .then((data) => console.log(data));
+
+// fetch(
+//     'https://cdn.shopify.com/shopifycloud/growth_tools/assets/stock_photos/photos-13e5031ef11335fbc8d9dad1c85018261c584584a46a8a19a6157d8a0c229201.xml',
+//     {
+//         headers: {
+//             // 'x-freepik-api-key': 'FPSXde59496d3238f1c6ab2f913f0fa7b3f8',
+//             // mode: 'no-cors',
+//             // credentials: 'omit',
+//             // Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+//         },
+//     }
+// )
+//     .then((response) => response.text())
+//     .then((data) => {
+//         // const matched = data.match(/<image\:image>(.*)<\/image\:image>/);
+//         console.log(data);
+//         //  writeFile('burst.json', file, 'utf-8')
+//     });
+
+// <image:image>
+//     <image:loc>https://burst.shopifycdn.com/photos/pouring-hot-coffee_1200x.jpg</image:loc>
+//     <image:title>Picture of Pouring Hot Coffee - Free Stock Photo</image:title>
+//     <image:caption>Image of Pouring Hot Coffee. This free stock photo is also about: Relax, Coffee, Kitchen, Morning, Caffeine, Lifestyle, Coffee Break, and Coffee Beans.</image:caption>
+//     <image:license>https://burst.shopify.com/legal/terms</image:license>
+// </image:image>
