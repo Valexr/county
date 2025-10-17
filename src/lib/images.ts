@@ -33,7 +33,7 @@ function createImages() {
         const width = ratio(window.innerWidth);
 
         return {
-            src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${width}}`,
+            src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${width}`,
             alt: `Image from Burst Shopify`,
         };
 
