@@ -1,14 +1,14 @@
 import { build, context } from 'esbuild';
 import svelte from 'esbuild-svelte';
-import { sveltePreprocess } from 'svelte-preprocess';
+// import { sveltePreprocess } from 'svelte-preprocess';
 import rm from './env/rm.js';
 import log from './env/log.js';
 import meta from './env/meta.js';
-import proxy from './env/proxy.js';
-import pkg from './package.json' with {type: 'json'};
+// import proxy from './env/proxy.js';
+import pkg from './package.json' with { type: 'json' };
 
 const DEV = process.argv.includes('--dev');
-const SPA = process.argv.includes('--spa');
+// const SPA = process.argv.includes('--spa');
 
 const svelteOptions = {
     compilerOptions: {
@@ -17,14 +17,14 @@ const svelteOptions = {
             return `${pkg.name}-${hash(css)}`;
         },
         runes: true,
-        modernAst: true
+        modernAst: true,
     },
-    preprocess: [
-        sveltePreprocess({
-            sourceMap: DEV,
-            typescript: true,
-        }),
-    ],
+    // preprocess: [
+    //     sveltePreprocess({
+    //         sourceMap: DEV,
+    //         typescript: true,
+    //     }),
+    // ],
 };
 
 const buildOptions = {
@@ -50,11 +50,11 @@ if (DEV) {
     const ctx = await context(buildOptions);
 
     await ctx.watch();
-    await ctx.serve({ 
-        host: '0.0.0.0', 
+    await ctx.serve({
+        host: '0.0.0.0',
         servedir: 'public',
-        certfile:'localhost.crt',
-        keyfile: 'localhost.key'
+        certfile: 'localhost.crt',
+        keyfile: 'localhost.key',
     });
 
     // SPA && proxy().listen(8080);
