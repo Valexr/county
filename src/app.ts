@@ -1,4 +1,4 @@
-import { name, repository } from 'package.json';
+import { name, repository } from '../package.json';
 import { mount } from 'svelte';
 import App from './App.svelte';
 
