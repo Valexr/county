@@ -53,8 +53,8 @@ if (DEV) {
   await ctx.serve({
     host: '0.0.0.0',
     servedir: 'public',
-    certfile: 'localhost.crt',
-    keyfile: 'localhost.key',
+    // certfile: 'localhost.crt',
+    // keyfile: 'localhost.key',
   });
 
   // SPA && proxy().listen(8080);

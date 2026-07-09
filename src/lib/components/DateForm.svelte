@@ -103,6 +103,9 @@
   input[type='date']::-webkit-datetime-edit {
     flex: 1;
   }
+  input[type='date']::-webkit-date-and-time-value {
+    text-align: center;
+  }
   input.clear {
     border-color: transparent;
   }
