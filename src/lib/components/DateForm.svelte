@@ -96,6 +96,8 @@
     border: 2px solid currentColor;
     border-radius: 0.25rem;
     color: inherit;
+    display: flex;
+    justify-content: center;
     /* max-width: 20em; */
     margin: auto;
     appearance: unset;
