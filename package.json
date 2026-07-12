@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node esbuild",
     "dev": "node esbuild --dev --spa",
+    "lint": "biome check --fix",
     "preview": "npx esbuild --servedir=public"
   },
   "repository": {
@@ -14,6 +15,7 @@
     "url": "https://github.com/Valexr/county.git"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.3",
     "@types/luxon": "^3.7.2",
     "@types/node": "^26.1.1",
     "esbuild": "^0.28.1",

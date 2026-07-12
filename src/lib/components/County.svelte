@@ -1,13 +1,13 @@
 <script lang="ts" module>
-  import Button from './Button.svelte';
-  import { convert } from '$lib/utils';
+import { convert } from '$lib/utils';
+import Button from './Button.svelte';
 
-  interface Props {
-    id?: string;
-    value: number;
-    type: keyof Translate;
-    name: keyof Translate;
-  }
+interface Props {
+	id?: string;
+	value: number;
+	type: keyof Translate;
+	name: keyof Translate;
+}
 </script>
 
 <script lang="ts">

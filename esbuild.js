@@ -1,9 +1,9 @@
 import { build, context } from 'esbuild';
 import svelte from 'esbuild-svelte';
-// import { sveltePreprocess } from 'svelte-preprocess';
-import rm from './env/rm.js';
 import log from './env/log.js';
 import meta from './env/meta.js';
+// import { sveltePreprocess } from 'svelte-preprocess';
+import rm from './env/rm.js';
 // import proxy from './env/proxy.js';
 import pkg from './package.json' with { type: 'json' };
 
@@ -13,7 +13,7 @@ const DEV = process.argv.includes('--dev');
 const svelteOptions = {
   compilerOptions: {
     css: 'external',
-    cssHash: ({ css, filename, name, hash }) => {
+    cssHash: ({ css, _filename, _name, hash }) => {
       return `${pkg.name}-${hash(css)}`;
     },
     runes: true,
@@ -56,7 +56,7 @@ if (DEV) {
     // certfile: 'localhost.crt',
     // keyfile: 'localhost.key',
   });
-
+  // openssl req -x509 -newkey rsa:4096 -keyout localhost.key -out localhost.crt -days 9999 -nodes -subj /CN=127.0.0.1
   // SPA && proxy().listen(8080);
 
   process.on('SIGTERM', ctx.dispose);

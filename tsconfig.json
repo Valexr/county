@@ -1,22 +1,22 @@
 {
-  "compilerOptions": {
-    "paths": {
-      "$lib/*": ["./src/lib/*"],
-      "$svg/*": ["./src/svg/*"],
-      "$types": ["./src/types.ts"]
-    },
-    "strict": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "resolveJsonModule": true,
-    "verbatimModuleSyntax": true,
-    "lib": ["DOM", "ESNext", "DOM.Iterable"],
-    "module": "ESNext",
-    "target": "ESNext",
-    "types": ["svelte", "Node"],
-    "ignoreDeprecations": "6.0"
-  },
-  "include": ["src/**/*"]
+	"compilerOptions": {
+		"paths": {
+			"$lib/*": ["./src/lib/*"],
+			"$svg/*": ["./src/svg/*"],
+			"$types": ["./src/types.ts"]
+		},
+		"strict": true,
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"resolveJsonModule": true,
+		"moduleResolution": "bundler",
+		"verbatimModuleSyntax": true,
+		"lib": ["DOM", "ESNext", "DOM.Iterable"],
+		"module": "ESNext",
+		"target": "ESNext",
+		"types": ["svelte", "Node"]
+	},
+	"include": ["src/**/*"]
 }

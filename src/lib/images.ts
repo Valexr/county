@@ -12,9 +12,11 @@ function createImages() {
 
   async function load() {
     if (!get().length) {
-      const url = './assets/data/photos.json';
+      const url = './assets/data/images.json';
       const res = await fetch(url);
-      set(await res.json());
+      const json = await res.json();
+      // console.log(json.images);
+      set(json.images);
     }
     back();
   }
@@ -29,17 +31,17 @@ function createImages() {
   }
 
   async function prepare() {
-    const name = get()[Math.floor(Math.random() * 24403)];
-    const width = ratio(window.innerWidth);
+    const image = get()[Math.floor(Math.random() * 7)];
+    // const width = ratio(window.innerWidth);
 
     return {
-      src: `https://burst.shopifycdn.com/photos/${name}.jpg?width=${width}`,
-      alt: `Image from Burst Shopify`,
+      src: 'https://bing.com' + image.url,
+      alt: image.copyright,
     };
 
-    function ratio(size: number) {
-      return size * devicePixelRatio;
-    }
+    // function ratio(size: number) {
+    //   return size * devicePixelRatio;
+    // }
   }
 
   return {

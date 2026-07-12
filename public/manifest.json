@@ -1,34 +1,34 @@
 {
-  "name": "county",
-  "short_name": "county",
-  "start_url": "/county/",
-  "scope": "/county/",
-  "display": "standalone",
-  "display_override": ["window-controls-overlay"],
-  "background_color": "transparent",
-  "theme_color": "transparent",
-  "icons": [
-    {
-      "src": "assets/favicon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/favicon.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/favicon.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "assets/favicon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ]
+	"name": "county",
+	"short_name": "county",
+	"start_url": "/county/",
+	"scope": "/county/",
+	"display": "standalone",
+	"display_override": ["window-controls-overlay"],
+	"background_color": "transparent",
+	"theme_color": "transparent",
+	"icons": [
+		{
+			"src": "assets/favicon.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/favicon.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/favicon.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "maskable"
+		},
+		{
+			"src": "assets/favicon.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	]
 }

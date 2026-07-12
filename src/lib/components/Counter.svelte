@@ -1,9 +1,9 @@
 <script lang="ts" module>
-  import County from './County.svelte';
+import County from './County.svelte';
 
-  interface Props {
-    counter: Counter;
-  }
+interface Props {
+	counter: Counter;
+}
 </script>
 
 <script lang="ts">

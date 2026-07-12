@@ -1,9 +1,9 @@
 <script lang="ts" module>
-  import { fade } from 'svelte/transition';
+import { fade } from 'svelte/transition';
 
-  interface Props {
-    quote: [text: string, author: string];
-  }
+interface Props {
+	quote: [text: string, author: string];
+}
 </script>
 
 <script lang="ts">

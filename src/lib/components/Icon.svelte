@@ -1,14 +1,14 @@
 <script lang="ts">
-  let {
-    id = '',
-    name = 'Close',
-    size = '16px',
-    color = 'currentColor',
-    rotate = 0,
-    spin = false,
-    style = '',
-    bordered = false,
-  } = $props();
+let {
+	id = '',
+	name = 'Close',
+	size = '16px',
+	color = 'currentColor',
+	rotate = 0,
+	spin = false,
+	style = '',
+	bordered = false,
+} = $props();
 </script>
 
 <svg

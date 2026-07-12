@@ -1,14 +1,15 @@
 <script lang="ts" module>
-  import { time } from '$lib/dates';
-  import { images } from '$lib/images';
-
-  import DateForm from '$lib/components/DateForm.svelte';
+  import { onMount } from 'svelte';
   import Control from '$lib/components/Control.svelte';
   import Counter from '$lib/components/Counter.svelte';
+  import DateForm from '$lib/components/DateForm.svelte';
   import Quote from '$lib/components/Quote.svelte';
-
-  import { quotes } from '$lib/quotes';
   import { counters } from '$lib/counters';
+  import { time } from '$lib/dates';
+  import { getAccessToken } from '$lib/giga';
+  import { images } from '$lib/images';
+  import { quotes } from '$lib/quotes';
+  // import GigaChat from 'gigachat';
 </script>
 
 <script lang="ts">
@@ -23,6 +24,13 @@
       active = intersecting?.target.id;
     }
   }
+
+  onMount(async () => {
+    // console.log(client);
+    //
+    // const accessToken = await getAccessToken();
+    // console.log(accessToken);
+  });
 </script>
 
 <svelte:head>

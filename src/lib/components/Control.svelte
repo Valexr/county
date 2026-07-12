@@ -1,8 +1,7 @@
 <script lang="ts" module>
-  import Icon from '$lib/components/Icon.svelte';
-
-  import { images } from '$lib/images';
-  import { dates } from '$lib/dates';
+import Icon from '$lib/components/Icon.svelte';
+import { dates } from '$lib/dates';
+import { images } from '$lib/images';
 </script>
 
 <script lang="ts">

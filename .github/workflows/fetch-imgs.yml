@@ -1,0 +1,25 @@
+name: Fetch Images
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # каждый день в 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Fetch Bing data
+        run: |
+          curl -s 'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8&mkt=en-US' \
+            > public/assets/data/images.json
+
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add public/assets/data/images.json
+          git commit -m "Update Images data" || true
+          git push

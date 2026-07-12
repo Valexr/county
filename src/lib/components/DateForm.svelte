@@ -1,5 +1,5 @@
 <script lang="ts" module>
-  import { dates, date } from '$lib/dates';
+  import { date, dates } from '$lib/dates';
   import { t } from '$lib/utils';
 
   interface Props {
@@ -100,6 +100,7 @@
     justify-content: center;
     /* max-width: 20em; */
     margin: auto;
+    padding: 0;
     appearance: unset;
   }
   input[type='date']::-webkit-datetime-edit {

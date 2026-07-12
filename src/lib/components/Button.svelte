@@ -1,11 +1,11 @@
 <script lang="ts" module>
-  import type { Snippet } from 'svelte';
+import type { Snippet } from 'svelte';
 
-  interface Props {
-    id: string;
-    type: string;
-    children: Snippet;
-  }
+interface Props {
+	id: string;
+	type: string;
+	children: Snippet;
+}
 </script>
 
 <script lang="ts">
