@@ -2,13 +2,17 @@ import { build, context } from 'esbuild';
 import svelte from 'esbuild-svelte';
 import log from './env/log.js';
 import meta from './env/meta.js';
-// import { sveltePreprocess } from 'svelte-preprocess';
 import rm from './env/rm.js';
-// import proxy from './env/proxy.js';
 import pkg from './package.json' with { type: 'json' };
 
 const DEV = process.argv.includes('--dev');
-// const SPA = process.argv.includes('--spa');
+
+const serveOptions = {
+  servedir: 'public',
+  cors: { origin: 'https://sberbank.ru' },
+  certfile: 'localhost.crt',
+  keyfile: 'localhost.key',
+};
 
 const svelteOptions = {
   compilerOptions: {
@@ -19,12 +23,6 @@ const svelteOptions = {
     runes: true,
     modernAst: true,
   },
-  // preprocess: [
-  //     sveltePreprocess({
-  //         sourceMap: DEV,
-  //         typescript: true,
-  //     }),
-  // ],
 };
 
 const buildOptions = {
@@ -50,14 +48,7 @@ if (DEV) {
   const ctx = await context(buildOptions);
 
   await ctx.watch();
-  await ctx.serve({
-    host: '0.0.0.0',
-    servedir: 'public',
-    // certfile: 'localhost.crt',
-    // keyfile: 'localhost.key',
-  });
-  // openssl req -x509 -newkey rsa:4096 -keyout localhost.key -out localhost.crt -days 9999 -nodes -subj /CN=127.0.0.1
-  // SPA && proxy().listen(8080);
+  await ctx.serve(serveOptions);
 
   process.on('SIGTERM', ctx.dispose);
   process.on('exit', ctx.dispose);

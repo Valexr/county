@@ -25,12 +25,10 @@
     }
   }
 
-  onMount(async () => {
-    // console.log(client);
-    //
-    // const accessToken = await getAccessToken();
-    // console.log(accessToken);
-  });
+  // onMount(async () => {
+  //   const accessToken = await getAccessToken();
+  //   console.log(accessToken);
+  // });
 </script>
 
 <svelte:head>
