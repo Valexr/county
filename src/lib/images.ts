@@ -1,4 +1,3 @@
-// https://clients3.google.com/cast/chromecast/home
 import { cacheable } from './cacheable';
 
 export const images = createImages();
