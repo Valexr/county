@@ -6,7 +6,7 @@
   import Quote from '$lib/components/Quote.svelte';
   import { counters } from '$lib/counters';
   import { time } from '$lib/dates';
-  import { getAccessToken } from '$lib/giga';
+  // import { getAccessToken } from '$lib/giga';
   import { images } from '$lib/images';
   import { quotes } from '$lib/quotes';
   // import GigaChat from 'gigachat';
