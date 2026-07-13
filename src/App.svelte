@@ -1,14 +1,14 @@
 <script lang="ts" module>
-  import { onMount } from 'svelte';
   import Control from '$lib/components/Control.svelte';
   import Counter from '$lib/components/Counter.svelte';
   import DateForm from '$lib/components/DateForm.svelte';
   import Quote from '$lib/components/Quote.svelte';
   import { counters } from '$lib/counters';
   import { time } from '$lib/dates';
-  // import { getAccessToken } from '$lib/giga';
   import { images } from '$lib/images';
   import { quotes } from '$lib/quotes';
+  // import { onMount } from 'svelte';
+  // import { getAccessToken } from '$lib/giga';
   // import GigaChat from 'gigachat';
 </script>
 
@@ -17,7 +17,7 @@
   let active: string | undefined = $state();
 
   function intersection(section: HTMLElement) {
-    const observer = new IntersectionObserver(observing, { threshold: 1 });
+    const observer = new IntersectionObserver(observing, { threshold: 0.9 });
     observer.observe(section);
     function observing(entries: IntersectionObserverEntry[]) {
       const intersecting = entries.find((e) => e.isIntersecting);
@@ -34,11 +34,11 @@
 <svelte:head>
   <title>{name}</title>
 </svelte:head>
-
+{console.log($images.length)}
 {#await Promise.all([images.load(), quotes.load()]) then}
   <main>
     {#each $counters as counter, id}
-      <section use:intersection id={String(id)}>
+      <section {@attach intersection} id={String(id)}>
         <header>
           <DateForm {id} {counter} />
         </header>
@@ -71,11 +71,11 @@
 <style>
   @import 'app.css';
 
-  iframe {
+  /*iframe {
     position: absolute;
     z-index: -1;
     border: 0;
-  }
+  }*/
 
   header {
     justify-content: center;

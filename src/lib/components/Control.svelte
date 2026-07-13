@@ -1,7 +1,7 @@
 <script lang="ts" module>
-import Icon from '$lib/components/Icon.svelte';
-import { dates } from '$lib/dates';
-import { images } from '$lib/images';
+  import Icon from '$lib/components/Icon.svelte';
+  import { dates } from '$lib/dates';
+  import { images } from '$lib/images';
 </script>
 
 <script lang="ts">
@@ -18,7 +18,7 @@ import { images } from '$lib/images';
   }
 </script>
 
-<button class="box" onclick={images.back}>
+<button class="box" id={active} onclick={images.back}>
   <Icon name="Images" />
 </button>
 <button class="box" id={active} onclick={deleteDate}>
