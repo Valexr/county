@@ -31,7 +31,7 @@ function createImages() {
   }
 
   async function prepare() {
-    const image = get()[Math.floor(Math.random() * get()?.length || 1)];
+    const image = get()[Math.floor(Math.random() * 58)];
     // const width = ratio(window.innerWidth);
 
     return {
