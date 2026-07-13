@@ -2,24 +2,62 @@ name: Fetch Images
 
 on:
   schedule:
-    - cron: "0 0 * * *" # каждый день в 00:00 UTC
+    - cron: "0 * * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Fetch Bing data
+      # - name: Fetch Bing data
+      #   run: |
+      #     curl -s 'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8&mkt=en-US' \
+      #       > public/assets/data/images.json
+
+      - name: Fetch Bing data (idx 1..7 -> 56 images in one JSON)
         run: |
-          curl -s 'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=8&mkt=en-US' \
-            > public/assets/data/images.json
+          set -euo pipefail
+          mkdir -p public/assets/data
+      
+          # jq нужен для склейки JSON
+          if ! command -v jq >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y jq
+          fi
+      
+          OUT="public/assets/data/images.json"
+          echo '{"images":[],"tooltips":{}}' > "$OUT"
+      
+          for i in 1 2 3 4 5 6 7; do
+            resp="$(curl -sS -H 'User-Agent: Mozilla/5.0' \
+              "https://www.bing.com/HPImageArchive.aspx?format=js&idx=${i}&n=8&mkt=en-US")"
+      
+            tmp="$(mktemp)"
+            jq -c --slurpfile newImgs <(echo "$resp" | jq '.images') \
+              '.images = (.images + $newImgs[0])' "$OUT" > "$tmp"
+            mv "$tmp" "$OUT"
+      
+            # tooltips оставляем от последнего, если нужно
+            if [ "$i" -eq 7 ]; then
+              tooltips="$(echo "$resp" | jq '.tooltips // {}')"
+              tmp="$(mktemp)"
+              jq -c --argjson t "$tooltips" '.tooltips=$t' "$OUT" > "$tmp"
+              mv "$tmp" "$OUT"
+            fi
+          done
 
       - name: Commit changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add public/assets/data/images.json
-          git commit -m "Update Images data" || true
-          git push
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Update Images data"
+          git push origin HEAD:${GITHUB_REF_NAME}
