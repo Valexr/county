@@ -21,8 +21,9 @@ function createImages() {
     const url = './assets/data/images.json';
     const res = await fetch(url);
     const json = await res.json();
-
-    set(unique(json.images));
+    const images = unique(json.images);
+    console.log(images.length);
+    set(images);
     // }
     back();
   }
@@ -34,7 +35,6 @@ function createImages() {
   }
 
   async function prepare() {
-    console.log(Math.floor(Math.random() * get().length));
     const image = get()[Math.floor(Math.random() * get().length)];
     // const width = ratio(window.innerWidth);
 
