@@ -15,13 +15,13 @@
     "url": "https://github.com/Valexr/county.git"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.3",
-    "@types/luxon": "^3.7.2",
-    "@types/node": "^26.1.1",
-    "esbuild": "^0.28.1",
+    "@biomejs/biome": "2.5.10",
+    "@types/luxon": "^3.7.5",
+    "@types/node": "^26.2.0",
+    "esbuild": "^0.28.2",
     "esbuild-svelte": "^0.9.5",
     "luxon": "^3.7.2",
-    "svelte": "^5.56.7",
+    "svelte": "^5.56.10",
     "typescript": "^7.0.2"
   },
   "pnpm": {
